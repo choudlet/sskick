@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Text, View, Image} from 'react-native';
-import styles from '../styles/style.js'
+import styles from '../../styles/style.js'
 import FBLogButton from './FBLogButton';
 import FBSDK, {LoginButton, AccessToken} from 'react-native-fbsdk';
 
@@ -11,7 +11,7 @@ export default class LoginView extends Component {
     return (
       <Image
         style={styles.containerImage}
-        source={require('../assets/images/SoccerBackground.jpg')}
+        source={require('../../assets/images/SoccerBackground.jpg')}
         >
         <View style={styles.colorContainer}>
           <View style={{flex:1}}>
