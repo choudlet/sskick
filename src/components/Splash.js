@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Text, View, Image, TouchableHighlight} from 'react-native';
 import styles from '../styles/style.js';
-import Login from './Login.js'
+import Login from './LoginView.js'
 
 export default class Splash extends React.Component {
 
