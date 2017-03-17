@@ -11,7 +11,7 @@ export default class EmailLogButton extends Component {
           <View style={loginStyles.centeredRow}>
             <View style={loginStyles.alignText}>
             <Icon name="envelope" size={30} color="white"/>
-            <Text style={{color:'white'}}>  Log In with Email</Text>
+            <Text style={{color:'white'}}>  Login with Email</Text>
             </View>
         </View>
       </TouchableHighlight>

@@ -12,7 +12,7 @@ export default StyleSheet.create({
     width: 100,
     height: 1,
     backgroundColor: 'white',
-    flex:0
+    flex:0,
   },
 
   colorContainer: {

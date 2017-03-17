@@ -8,7 +8,7 @@ import FBSDKCore from 'react-native-fbsdk';
 var {AccessToken, LoginManager} = FBSDKCore
 import {connect} from 'react-redux';
 import * as loginActions from '../../actions/loginActions'
-import LoadingSpinner from '../loadingSpinner/LoadingSpinner';
+import LoadingSpinner from '../shared/LoadingSpinner';
 import TutorialPlayer from '../TutorialPlayer/TutorialPlayer';
 
  class LoginView extends Component {
@@ -22,8 +22,9 @@ import TutorialPlayer from '../TutorialPlayer/TutorialPlayer';
 
    transitionToTutorial() {
      this.props.navigator.push({
-       title: 'Tutorial Player',
-       component: TutorialPlayer
+       component: TutorialPlayer,
+       navigationBarHidden:true
+
      })
    }
 
@@ -34,6 +35,7 @@ import TutorialPlayer from '../TutorialPlayer/TutorialPlayer';
 
   triggerEmailAccountCreate() {
     console.log('Attempting Account Create')
+    this.transitionToTutorial();
     // this.transitionLogin();
   }
 
@@ -70,7 +72,7 @@ import TutorialPlayer from '../TutorialPlayer/TutorialPlayer';
         source={require('../../assets/images/SoccerBackground.jpg')}
         >
         <View style={loginStyles.colorContainer}>
-          <View style={{flex:2}}>
+          <View style={{flex:2, alignItems:'center', justifyContent:'center'}}>
             <View style={loginStyles.centerBox}>
               <Text style={{fontFamily:'Octin Sports', fontSize: 30, color:'white'}}>Login</Text>
             </View>
@@ -89,7 +91,7 @@ import TutorialPlayer from '../TutorialPlayer/TutorialPlayer';
           <View style={{flex:1}}>
           </View>
         </View>
-  
+
         </Image>
     )
   }

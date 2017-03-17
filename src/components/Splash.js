@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, Image, TouchableHighlight} from 'react-native';
+import {Text, View, Image, TouchableHighlight,StatusBar} from 'react-native';
 import styles from '../styles/style.js';
 import Login from './login/LoginView.js'
 
@@ -23,6 +23,7 @@ export default class Splash extends React.Component {
         style={styles.containerImage}
         source={require('../assets/images/SoccerBackground.jpg')}
         >
+        <StatusBar hidden={true} />
         <View style={styles.colorContainer}>
           <View style={{flex:1}}></View>
           <View style={{flex:3, backgroundColor:'transparent'}}>

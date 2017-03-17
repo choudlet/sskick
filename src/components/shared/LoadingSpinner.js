@@ -1,7 +1,7 @@
 import React, {Component} from 'React';
 import {TouchableHighlight, View, Text, Image, Animated, Easing} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import styles from './loadingSpinnerStyles';
+import styles from './loadingSpinnerStyle';
 
 const AnimatedIcon = Animated.createAnimatedComponent(Icon)
 

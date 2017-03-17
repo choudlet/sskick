@@ -6,7 +6,5 @@ export default StyleSheet.create({
       // remove width and height to override fixed static size
       width: null,
       height: null,
-      justifyContent: 'center',
-      alignItems: 'center'
   }
 });
