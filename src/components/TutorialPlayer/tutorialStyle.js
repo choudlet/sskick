@@ -32,5 +32,9 @@ export default StyleSheet.create({
   paragraphText: {
     color:'white',
     textAlign:'center'
-  }
+  },
+  backgroundVideo: {
+    width:100,
+    height:200
+  },
 });

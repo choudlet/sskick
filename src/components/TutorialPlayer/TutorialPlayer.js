@@ -21,9 +21,13 @@ export default class TutorialPlayer extends Component {
                 <Text style={tutorialStyles.paragraphText}>Watch the tutorial video to set up your Sidekick. You can access thie video at anytime in the <Text style={{color:'#69C700'}}>upper right corner</Text></Text>
               </View>
               <Video
-                source={{uri:'sample.mp4'}}
-      resizeMode="cover"                      // Fill the whole screen at aspect ratio.*
-      repeat={true}
+                ref={(ref) => {
+                  this.player = ref
+                }}
+                repeat={true}
+                resizeMode='cover'
+                source={require("../../assets/videos/sample.mp4")}
+                style={tutorialStyles.backgroundVideo}
                 >
 
               </Video>
