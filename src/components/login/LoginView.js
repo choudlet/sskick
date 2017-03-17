@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, Image} from 'react-native';
+import {Text, View, Image, Modal} from 'react-native';
 import FBLogButton from './FBLogButton';
 import EmailLogButton from './EmailLogButton';
 import EmailCreateButton from './EmailCreateButton';
@@ -8,16 +8,33 @@ import FBSDKCore from 'react-native-fbsdk';
 var {AccessToken, LoginManager} = FBSDKCore
 import {connect} from 'react-redux';
 import * as loginActions from '../../actions/loginActions'
-
+import LoadingSpinner from '../loadingSpinner/LoadingSpinner';
+import TutorialPlayer from '../TutorialPlayer/TutorialPlayer';
 
  class LoginView extends Component {
 
-  triggerEmailLogin() {
+   constructor(props) {
+     super(props)
+     this.state= {
+       modalVisible:false
+     }
+   }
 
+   transitionToTutorial() {
+     this.props.navigator.push({
+       title: 'Tutorial Player',
+       component: TutorialPlayer
+     })
+   }
+
+  triggerEmailLogin() {
+    this.setModalVisible(!this.state.modalVisible)
+    console.log(this.state.modalVisible)
 }
 
   triggerEmailAccountCreate() {
     console.log('Attempting Account Create')
+    // this.transitionLogin();
   }
 
   triggerFBSignIn() {
@@ -29,8 +46,8 @@ import * as loginActions from '../../actions/loginActions'
         console.log(result);
         AccessToken.getCurrentAccessToken().then(
                   (data) => {
-                    console.log(data);
                     this.props.FBLogInRequest(data)
+                     this.transitionToTutorial()
                   }
                 )
     }
@@ -40,6 +57,11 @@ import * as loginActions from '../../actions/loginActions'
   }
 );
   }
+
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
+
 
   render() {
     return (
@@ -58,14 +80,16 @@ import * as loginActions from '../../actions/loginActions'
             <FBLogButton triggerFBSignIn={this.triggerFBSignIn.bind(this)}></FBLogButton>
             </View>
             <View style={loginStyles.centerBox}>
-              <EmailLogButton triggerEmailLogin={this.triggerEmailLogin}></EmailLogButton>
+              <EmailLogButton triggerEmailLogin={this.triggerEmailLogin.bind(this)}></EmailLogButton>
             </View>
             <View style={loginStyles.centerBox}>
-              <EmailCreateButton triggerEmailAccountCreate={this.triggerEmailAccountCreate}></EmailCreateButton>
+              <EmailCreateButton triggerEmailAccountCreate={this.triggerEmailAccountCreate.bind(this)}></EmailCreateButton>
             </View>
           </View>
-          <View style={{flex:1}}></View>
+          <View style={{flex:1}}>
+          </View>
         </View>
+  
         </Image>
     )
   }
