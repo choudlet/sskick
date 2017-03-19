@@ -3,6 +3,7 @@ import {View, Text, Image, TouchableHighlight} from 'react-native';
 import NavBar from '../shared/NavBar';
 import pathStyles from './pathStyle.js'
 import serverPath from '../../config/devProd.js'
+import LevelView from '../Level/LevelView';
 
 export default class PathContainer extends Component {
 constructor() {
@@ -16,7 +17,13 @@ constructor() {
   }
 
   transitionToPath(pathName) {
-    console.log(pathName)
+    this.props.navigator.push({
+      component:LevelView,
+      passProps: {
+        pathName: pathName
+      },
+      navigationBarHidden:true
+    })
   }
 
   componentWillMount() {
