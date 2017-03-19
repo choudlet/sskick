@@ -2433,7 +2433,7 @@ lodash@^3.5.0:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
-lodash@^4.0.0, lodash@^4.14.0, lodash@^4.16.6, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@^4.6.1:
+lodash@^4.0.0, lodash@^4.14.0, lodash@^4.16.4, lodash@^4.16.6, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@^4.6.1:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -2938,9 +2938,22 @@ react-native-vector-icons@^4.0.0:
     lodash "^4.0.0"
     yargs "^6.3.0"
 
+react-native-video-controls@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-video-controls/-/react-native-video-controls-1.1.1.tgz#478995cb6e29660783d4fa4bcfd3c174d7d2c840"
+  dependencies:
+    lodash "^4.16.4"
+    react-native-video "git+https://github.com/react-native-community/react-native-video.git#master"
+
 react-native-video@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-native-video/-/react-native-video-1.0.0.tgz#ba92b9e1a114c2c1f3a6144b0639ca3f69a0cc74"
+  dependencies:
+    keymirror "0.1.1"
+
+"react-native-video@git+https://github.com/react-native-community/react-native-video.git#master":
+  version "1.0.0"
+  resolved "git+https://github.com/react-native-community/react-native-video.git#911bc5222bb4924982156051eb970b2511e53a4d"
   dependencies:
     keymirror "0.1.1"
 

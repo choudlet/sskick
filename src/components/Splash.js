@@ -1,11 +1,20 @@
 import React, {Component} from 'react';
-import {Text, View, Image, TouchableHighlight,StatusBar} from 'react-native';
+import {Text, View, Image, TouchableHighlight,StatusBar, AsyncStorage} from 'react-native';
 import styles from '../styles/style.js';
 import Login from './login/LoginView.js'
 
 export default class Splash extends React.Component {
 
   componentWillMount() {
+    try {
+  const value = AsyncStorage.getItem('@SSKick:currentUser');
+  if (value !== null){
+    // We have data!!
+    console.log(value);
+  }
+} catch (error) {
+  // Error retrieving data
+}
   }
 
   touchPress() {

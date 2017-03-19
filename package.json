@@ -13,6 +13,7 @@
 		"react-native-oauth": "latest",
 		"react-native-vector-icons": "^4.0.0",
 		"react-native-video": "^1.0.0",
+		"react-native-video-controls": "^1.1.1",
 		"react-redux": "^5.0.3",
 		"redux": "^3.6.0",
 		"redux-immutable-state-invariant": "^2.0.0",

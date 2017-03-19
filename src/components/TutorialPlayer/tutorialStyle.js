@@ -33,8 +33,28 @@ export default StyleSheet.create({
     color:'white',
     textAlign:'center'
   },
-  backgroundVideo: {
-    width:100,
-    height:200
+  videoImage: {
+    width:300,
+    height:150,
+    marginTop:60,
+    flexDirection: 'row',
+    justifyContent:'center',
+    alignItems: 'center',
+    borderWidth:1,
+    borderColor:'white'
   },
+  playButton: {
+    color: '#5FC906'
+  },
+  skip: {
+    fontSize: 20,
+    fontFamily: 'Octin Sports',
+    color: 'white'
+  },
+  skipContain: {
+    backgroundColor: 'rgba(39,39,41,.6)',
+    marginTop: 60,
+    padding:10
+
+  }
 });
