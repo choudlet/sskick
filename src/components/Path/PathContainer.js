@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, Image, TouchableHighlight} from 'react-native';
+import {View, Text, Image, TouchableHighlight,ActivityIndicator} from 'react-native';
 import NavBar from '../shared/NavBar';
 import pathStyles from './pathStyle.js'
 import serverPath from '../../config/devProd.js'
@@ -9,11 +9,16 @@ export default class PathContainer extends Component {
 constructor() {
   super()
   this.state= {
-    paths: undefined
+    paths: undefined,
+    pathsNumber: undefined,
+    pathsLoad: 0
   }
 }
   onLoad() {
     console.log('LOADEDEDDD');
+    this.setState({
+      pathsLoad: this.state.pathsLoad+ 1
+    })
   }
 
   transitionToPath(pathName) {
@@ -32,18 +37,19 @@ constructor() {
     .then((data)=> {
       return data.json()
     }).then(dataJson=> {
-      console.log(dataJson[0].name)
+      console.log(dataJson)
       this.setState({
         paths: dataJson,
-        doneImage: dataJson.length
+        pathsNumber: dataJson.length
       })
+      console.log(this.state)
     })
   }
 
   render() {
-    let ajaxLoad;
+    let pathsContent;
     if(this.state.paths != undefined) {
-      ajaxLoad = this.state.paths.map(element=> {
+      pathsContent = this.state.paths.map(element=> {
         return <TouchableHighlight key={element.id} onPress={()=>this.transitionToPath(element.name)}><Image
           onLoad={()=>{this.onLoad()}}
           style={pathStyles.pathImage}
@@ -51,8 +57,6 @@ constructor() {
           <Text style={pathStyles.pathName}>{element.name}</Text>
         </Image></TouchableHighlight>
       })
-    } else {
-      ajaxLoad = <View></View>
     }
 
     return (
@@ -66,7 +70,13 @@ constructor() {
           <View style={pathStyles.borderLine}></View>
           <Text style={pathStyles.paragraphText}>Select your skill set and complete levels to get you closer to the player you are meant to become</Text>
         </View>
-        {ajaxLoad}
+        <View style={{justifyContent:'center', alignItems:'center'}}>
+        {<ActivityIndicator
+                      size='large'
+                      color='red'
+                        ></ActivityIndicator> && this.state.pathsLoad != 2}
+        {pathsContent}
+      </View>
         </Image>
     )
 }

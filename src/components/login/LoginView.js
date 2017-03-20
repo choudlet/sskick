@@ -76,6 +76,7 @@ import TutorialPlayer from '../TutorialPlayer/TutorialPlayer';
             <View style={loginStyles.centerBox}>
               <Text style={{fontFamily:'Octin Sports', fontSize: 30, color:'white'}}>Login</Text>
             </View>
+            <View style={loginStyles.borderLine}></View>
           </View>
           <View style={{flex:2}}>
             <View style={loginStyles.centerBox}>

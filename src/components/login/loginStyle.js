@@ -13,6 +13,7 @@ export default StyleSheet.create({
     height: 1,
     backgroundColor: 'white',
     flex:0,
+    marginBottom: '20%'
   },
 
   colorContainer: {
@@ -25,10 +26,10 @@ export default StyleSheet.create({
   },
 
   centerBox: {
-    flex:1,
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems:'center'
+    alignItems:'center',
+    flex:1
   },
   basicRow: {
     flex:1,

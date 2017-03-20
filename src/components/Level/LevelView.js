@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import NavBar from '../shared/NavBar'
-import {View, Text} from 'react-native';
-
+import {View, Text, ActivityIndicator} from 'react-native';
+import LoadingSpinner from '../shared/LoadingSpinner';
 
 export default class LevelView extends Component {
 
@@ -15,7 +15,11 @@ export default class LevelView extends Component {
       <View>
       <NavBar navigator={this.props.navigator}/>
       <View>
-      <Text>YOU MADE IT</Text>
+        <ActivityIndicator
+          size="large"
+          color="green"
+          animating="true"
+        />
       </View>
       </View>
     )
