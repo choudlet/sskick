@@ -5,27 +5,21 @@ import Login from './login/LoginView.js'
 
 export default class Splash extends React.Component {
 
-  componentWillMount() {
-    try {
-  const value = AsyncStorage.getItem('@SSKick:currentUser');
-  if (value !== null){
-    // We have data!!
-    console.log(value);
-  }
-} catch (error) {
-  // Error retrieving data
-}
-  }
 
   touchPress() {
     this.props.navigator.push({
       component: Login,
       title: 'Login',
-      navigationBarHidden:true
+      navigationBarHidden:true,
+      passProps: {
+        showNavModal: this.props.showNavModal
+      }
     })
   }
 
-
+  componentDidMount() {
+    console.log(super.props);
+  }
   render() {
     return (
       <Image

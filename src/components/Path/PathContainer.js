@@ -2,22 +2,19 @@ import React, {Component} from 'react';
 import {View, Text, Image, TouchableHighlight,ActivityIndicator} from 'react-native';
 import NavBar from '../shared/NavBar';
 import pathStyles from './pathStyle.js'
-import serverPath from '../../config/devProd.js'
 import LevelView from '../Level/LevelView';
 
 export default class PathContainer extends Component {
 constructor() {
   super()
   this.state= {
-    paths: undefined,
-    pathsNumber: undefined,
     pathsLoad: 0
   }
 }
-  onLoad() {
-    console.log('LOADEDEDDD');
+  imageSuccess() {
+    console.log('IMAGE LOADED');
     this.setState({
-      pathsLoad: this.state.pathsLoad+ 1
+      pathsLoad: this.state.pathsLoad + 1
     })
   }
 
@@ -32,32 +29,18 @@ constructor() {
   }
 
   componentWillMount() {
-    console.log(this.state.paths)
-    return fetch(`${serverPath}path`)
-    .then((data)=> {
-      return data.json()
-    }).then(dataJson=> {
-      console.log(dataJson)
-      this.setState({
-        paths: dataJson,
-        pathsNumber: dataJson.length
-      })
-      console.log(this.state)
-    })
+    console.log(this.props.paths.length, this.state.pathsLoad);
   }
 
   render() {
-    let pathsContent;
-    if(this.state.paths != undefined) {
-      pathsContent = this.state.paths.map(element=> {
+    let pathsContent = this.props.paths.map(element=> {
         return <TouchableHighlight key={element.id} onPress={()=>this.transitionToPath(element.name)}><Image
-          onLoad={()=>{this.onLoad()}}
+          onLoad={()=>{this.imageSuccess()}}
           style={pathStyles.pathImage}
           source={{uri: element.imageUrl}}>
           <Text style={pathStyles.pathName}>{element.name}</Text>
         </Image></TouchableHighlight>
       })
-    }
 
     return (
         <Image
@@ -71,11 +54,10 @@ constructor() {
           <Text style={pathStyles.paragraphText}>Select your skill set and complete levels to get you closer to the player you are meant to become</Text>
         </View>
         <View style={{justifyContent:'center', alignItems:'center'}}>
-        {<ActivityIndicator
+        {this.state.pathsLoad == this.props.paths.length ? pathsContent: (<ActivityIndicator
                       size='large'
                       color='red'
-                        ></ActivityIndicator> && this.state.pathsLoad != 2}
-        {pathsContent}
+                        ></ActivityIndicator>)}
       </View>
         </Image>
     )

@@ -13,24 +13,20 @@ import TutorialPlayer from '../TutorialPlayer/TutorialPlayer';
 
  class LoginView extends Component {
 
-   constructor(props) {
-     super(props)
-     this.state= {
-       modalVisible:false
-     }
-   }
 
    transitionToTutorial() {
      this.props.navigator.push({
        component: TutorialPlayer,
-       navigationBarHidden:true
+       navigationBarHidden:true,
+       passProps: {
+         showNavModal: this.props.showNavModal
+       }
 
      })
    }
 
   triggerEmailLogin() {
-    this.setModalVisible(!this.state.modalVisible)
-    console.log(this.state.modalVisible)
+    console.log('Trying Email Login')
 }
 
   triggerEmailAccountCreate() {
@@ -64,6 +60,9 @@ import TutorialPlayer from '../TutorialPlayer/TutorialPlayer';
     this.setState({modalVisible: visible});
   }
 
+  componentWillMount() {
+    console.log(this.props)
+  }
 
   render() {
     return (

@@ -7,9 +7,18 @@ import VideoPlayer from 'react-native-video-controls';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import VideoPlay from '../VideoPlay/VideoPlay';
 import PathContainer from '../Path/PathContainer';
+import serverPath from '../../config/devProd.js'
 
 
 export default class TutorialPlayer extends Component {
+
+  constructor() {
+    super()
+    this.state= {
+      paths: undefined,
+      pathsNumber: undefined,
+    }
+  }
 
   transitionToVideo() {
     this.props.navigator.push({
@@ -22,7 +31,22 @@ export default class TutorialPlayer extends Component {
   transitionToPath() {
     this.props.navigator.push({
       component:PathContainer,
-      navigationBarHidden:true
+      navigationBarHidden:true,
+      passProps: {paths:this.state.paths, pathsNumber:this.state.pathsNumber}
+    })
+  }
+
+  componentWillMount() {
+    console.log(this.props);
+    return fetch(`${serverPath}path`)
+    .then((data)=> {
+      return data.json()
+    }).then(dataJson=> {
+      console.log(dataJson)
+      this.setState({
+        paths: dataJson,
+        pathsNumber: dataJson.length
+      })
     })
   }
 
@@ -33,7 +57,7 @@ export default class TutorialPlayer extends Component {
               style={tutorialStyles.containerImage}
               source={require('../../assets/images/FieldBackground.jpg')}
               >
-              <NavBar></NavBar>
+              <NavBar navigator={this.props.navigator} showNavModal={this.props.showNavModal.bind(this)}></NavBar>
               <View style={tutorialStyles.introContainer}>
                 <Text style={tutorialStyles.headlineText}>Tutorial Video</Text>
                 <View style={tutorialStyles.borderLine}></View>
