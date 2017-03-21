@@ -1,7 +1,7 @@
 var serverPath;
 
 if (__DEV__) {
-  serverPath = 'https://sskickserver.herokuapp.com/'
-} else serverPath = 'https://sskickserver.herokuapp.com/';
+  serverPath = 'http://localhost:3000/'
+} else serverPath = 'http://localhost:3000/';
 
 export default serverPath;

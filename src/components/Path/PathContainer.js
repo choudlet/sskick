@@ -3,12 +3,14 @@ import {View, Text, Image, TouchableHighlight,ActivityIndicator} from 'react-nat
 import NavBar from '../shared/NavBar';
 import pathStyles from './pathStyle.js'
 import LevelView from '../Level/LevelView';
+import serverPath from '../../config/devProd';
 
 export default class PathContainer extends Component {
 constructor() {
   super()
   this.state= {
-    pathsLoad: 0
+    pathsLoad: 0,
+    selectedPathAndLevels: undefined
   }
 }
   imageSuccess() {
@@ -18,23 +20,27 @@ constructor() {
     })
   }
 
-  transitionToPath(pathName) {
-    this.props.navigator.push({
-      component:LevelView,
-      passProps: {
-        pathName: pathName
-      },
-      navigationBarHidden:true
+  transitionToPath(path) {
+    return fetch(`${serverPath}path/${path.id}`)
+    .then((data)=> {
+      return data.json()
+    }).then(dataJson=> {
+      this.setState({
+        selectedPathAndLevels: dataJson[0]
+      })
+      this.props.navigator.push({
+        component:LevelView,
+        navigationBarHidden:true,
+        passProps: {
+          selectedPathAndLevels: this.state.selectedPathAndLevels
+        }
+      })
     })
-  }
-
-  componentWillMount() {
-    console.log(this.props.paths.length, this.state.pathsLoad);
   }
 
   render() {
     let pathsContent = this.props.paths.map(element=> {
-        return <TouchableHighlight key={element.id} onPress={()=>this.transitionToPath(element.name)}><Image
+        return <TouchableHighlight key={element.id} onPress={()=>this.transitionToPath(element)}><Image
           onLoad={()=>{this.imageSuccess()}}
           style={pathStyles.pathImage}
           source={{uri: element.imageUrl}}>
@@ -54,10 +60,7 @@ constructor() {
           <Text style={pathStyles.paragraphText}>Select your skill set and complete levels to get you closer to the player you are meant to become</Text>
         </View>
         <View style={{justifyContent:'center', alignItems:'center'}}>
-        {this.state.pathsLoad == this.props.paths.length ? pathsContent: (<ActivityIndicator
-                      size='large'
-                      color='red'
-                        ></ActivityIndicator>)}
+          {pathsContent}
       </View>
         </Image>
     )

@@ -57,7 +57,7 @@ export default class TutorialPlayer extends Component {
               style={tutorialStyles.containerImage}
               source={require('../../assets/images/FieldBackground.jpg')}
               >
-              <NavBar navigator={this.props.navigator} showNavModal={this.props.showNavModal.bind(this)}></NavBar>
+              <NavBar navigator={this.props.navigator} showNavModal={this.props.showNavModal}></NavBar>
               <View style={tutorialStyles.introContainer}>
                 <Text style={tutorialStyles.headlineText}>Tutorial Video</Text>
                 <View style={tutorialStyles.borderLine}></View>
