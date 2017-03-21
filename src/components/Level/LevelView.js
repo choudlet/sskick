@@ -5,9 +5,17 @@ import LoadingSpinner from '../shared/LoadingSpinner';
 import levelStyles from './levelStyle';
 import SkillView from '../Skill/SkillView'
 import serverPath from '../../config/devProd';
+import Spinner from 'react-native-spinkit'
 
 export default class LevelView extends Component {
-  
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      levelImageTotal:this.props.selectedPathAndLevels.Levels.length,
+      levelLoadTotal:0
+    }
+  }
 
   transitionToLevel(level) {
     return fetch(`${serverPath}level/${level.id}`)
@@ -27,6 +35,13 @@ export default class LevelView extends Component {
     })
   }
 
+  imageSuccess() {
+    this.setState({
+      levelLoadTotal: this.state.levelLoadTotal + 1
+    })
+    console.log(this.state.levelLoadTotal, this.state.levelLoadTotal)
+  }
+
   componentWillMount() {
     console.log(this.props)
   }
@@ -37,6 +52,7 @@ export default class LevelView extends Component {
       return <TouchableHighlight   key={level.id} onPress={()=>{this.transitionToLevel(level)}}><Image
         source={{uri:level.backgroundImageUrl}}
         style={levelStyles.containerImage}
+        onLoad={()=>{this.imageSuccess()}}
         >
         <View style={levelStyles.introContainer}>
           <Text style={levelStyles.levelText}>Level #{level.levelNumber}</Text>
@@ -47,9 +63,16 @@ export default class LevelView extends Component {
     return(
       <View>
       <NavBar navigator={this.props.navigator}/>
-      <View>
-        <ScrollView
-          >
+      <View style={{justifyContent:'center', alignItems:'center'}}>
+        {this.state.levelImageTotal == this.state.levelLoadTotal ? null :
+          <Spinner
+            size={100}
+            color='#64AE20'
+            style="Wave"
+            style={{marginTop:'50%'}}
+             />
+        }
+        <ScrollView style={{opacity:this.state.levelImageTotal == this.state.levelLoadTotal?1:0}}>
         {levelContent}
         </ScrollView>
       </View>
