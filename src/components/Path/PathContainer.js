@@ -23,6 +23,7 @@ constructor() {
   transitionToPath(path) {
     return fetch(`${serverPath}path/${path.id}`)
     .then((data)=> {
+      console.log(data);
       return data.json()
     }).then(dataJson=> {
       this.setState({

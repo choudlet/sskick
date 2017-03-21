@@ -3,6 +3,8 @@ import NavBar from '../shared/NavBar'
 import {View, Text, ActivityIndicator,ScrollView, Image, TouchableHighlight} from 'react-native';
 import LoadingSpinner from '../shared/LoadingSpinner';
 import levelStyles from './levelStyle';
+import SkillView from '../Skill/SkillView'
+import serverPath from '../../config/devProd';
 
 export default class LevelView extends Component {
 
@@ -15,10 +17,10 @@ export default class LevelView extends Component {
         selectedLevelandSkills: dataJson[0]
       })
       this.props.navigator.push({
-        component:LevelView,
+        component:SkillView,
         navigationBarHidden:true,
         passProps: {
-          selectedPathAndLevels: this.state.selectedPathAndLevels
+          selectedLevelandSkills: this.state.selectedLevelandSkills
         }
       })
     })

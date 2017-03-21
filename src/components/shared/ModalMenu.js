@@ -15,7 +15,7 @@ return (
 
 <Modal
         animationType={"slide"}
-        transparent={false}
+        transparent={true}
         visible={true}
         onRequestClose={() => {alert("Modal has been closed.")}}
         >
@@ -24,7 +24,7 @@ return (
           <Text>Hello World!</Text>
 
           <TouchableHighlight onPress={() => {
-            this.showNavModal()
+            this.props.hideNavModal()
           }}>
             <Text>Hide Modal</Text>
           </TouchableHighlight>
