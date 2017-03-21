@@ -1,22 +1,24 @@
 import React, {Component} from 'react';
-import {View, Text, Image, TouchableHighlight,ActivityIndicator} from 'react-native';
+import {View, Text, Image, TouchableHighlight} from 'react-native';
 import NavBar from '../shared/NavBar';
 import pathStyles from './pathStyle.js'
 import LevelView from '../Level/LevelView';
 import serverPath from '../../config/devProd';
+import Spinner from 'react-native-spinkit';
 
 export default class PathContainer extends Component {
-constructor() {
-  super()
+constructor(props) {
+  super(props)
   this.state= {
-    pathsLoad: 0,
+    pathsImageLoad: 0,
+    totalPaths: this.props.paths.length,
     selectedPathAndLevels: undefined
   }
 }
   imageSuccess() {
     console.log('IMAGE LOADED');
     this.setState({
-      pathsLoad: this.state.pathsLoad + 1
+      pathsImageLoad: this.state.pathsImageLoad + 1
     })
   }
 
@@ -61,7 +63,17 @@ constructor() {
           <Text style={pathStyles.paragraphText}>Select your skill set and complete levels to get you closer to the player you are meant to become</Text>
         </View>
         <View style={{justifyContent:'center', alignItems:'center'}}>
+          {this.state.totalPaths == this.state.pathsImageLoad ? null :
+            <Spinner
+              size={100}
+              color='#64AE20'
+              style="Wave"
+              style={{marginTop:'50%'}}
+               />
+          }
+          <View style={{opacity:this.state.totalPaths == this.state.pathsImageLoad?1:0, justifyContent: 'center', alignItems:'center'}}>
           {pathsContent}
+        </View>
       </View>
         </Image>
     )

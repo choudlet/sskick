@@ -2,21 +2,35 @@ import React, {Component} from 'react';
 import {View, Text,TouchableHighlight, Image} from 'react-native';
 import NavBar from '../shared/NavBar';
 import skillStyles from './skillStyle';
-
+import DrillLaunch from '../DrillLaunch/DrillLaunch.js'
 export default class SkillView extends Component {
 
-  componentDidMount() {
-    console.log(this.props);
+  constructor() {
+    super()
+    this.state= {
+      currentDrill: undefined
+    }
   }
 
   transitionToDrill(skill) {
-    console.log(skill);
+    this.setState({
+      currentDrill:skill
+    })
+    this.props.navigator.push({
+      component:DrillLaunch,
+      navigationBarHidden:true,
+      passProps: {
+        currentDrill: this.state.currentDrill
+      }
+    })
+
   }
+
   render() {
     let skillLists = this.props.selectedLevelandSkills.Skills.map(element=> {
         return <TouchableHighlight
           key={element.id}
-          onPress={()=>this.transitionToDrill(element)}
+          onPress={()=>{this.transitionToDrill(element)}}
           >
           <View style={skillStyles.skillContainer}>
             <Text style={skillStyles.skillText}>#{element.order} {element.name}</Text>

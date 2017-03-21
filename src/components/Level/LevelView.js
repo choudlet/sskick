@@ -7,6 +7,7 @@ import SkillView from '../Skill/SkillView'
 import serverPath from '../../config/devProd';
 
 export default class LevelView extends Component {
+  
 
   transitionToLevel(level) {
     return fetch(`${serverPath}level/${level.id}`)
