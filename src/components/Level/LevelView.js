@@ -63,6 +63,10 @@ export default class LevelView extends Component {
     return(
       <View>
       <NavBar navigator={this.props.navigator}/>
+      <Image
+        source={require('../../assets/images/FieldBackground.jpg')}
+        style={levelStyles.backgroundImage}
+        >
       <View style={{justifyContent:'center', alignItems:'center'}}>
         {this.state.levelImageTotal == this.state.levelLoadTotal ? null :
           <Spinner
@@ -76,6 +80,7 @@ export default class LevelView extends Component {
         {levelContent}
         </ScrollView>
       </View>
+    </Image>
       </View>
     )
   }

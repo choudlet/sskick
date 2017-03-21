@@ -24,6 +24,9 @@ export default StyleSheet.create({
     fontFamily: 'Octin Sports',
     fontSize:20
   },
-
+  backgroundImage: {
+    width:null,
+    height:null,
+  }
 
 });
