@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 import {View, Text,TouchableHighlight, Image} from 'react-native';
 import NavBar from '../shared/NavBar';
 import skillStyles from './skillStyle';
-import DrillLaunch from '../DrillLaunch/DrillLaunch.js'
+import DrillLaunch from '../DrillLaunch/DrillLaunch'
 import Spinner from 'react-native-spinkit';
+
+
 export default class SkillView extends Component {
 
   constructor() {

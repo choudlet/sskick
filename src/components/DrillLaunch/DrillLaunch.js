@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import Spinner from 'react-native-spinkit'
 import drillLaunchStyles from './DrillLaunchStyle';
 import VideoPlay from '../VideoPlay/VideoPlay.js'
+import DrillRun from '../DrillRun/DrillRun'
 
 export default class DrillLaunch extends Component {
 
@@ -95,12 +96,45 @@ export default class DrillLaunch extends Component {
       case 12:
       minutes = '24:00';
       break;
+      case 13:
+      minutes = '26:00';
+      break;
+      case 14:
+      minutes = '28:00';
+      break;
+      case 15:
+      minutes = '30:00';
+      break;
     }
     console.log(minutes)
     this.setState({
       currentTime: minutes
     })
     console.log(this.state.currentTime)
+  }
+
+  runDrill() {
+    // this.props.navigator.push({
+    //   component: DrillRun,
+    //   navigationBarHidden:true,
+    //   passProps: {
+    //     drillTime: this.determineMilliseconds(this.state.timeIterator),
+    //     drill: this.props.currentDrill
+    //   }
+    // })
+
+    this.props.navigator.push({
+      component: VideoPlay,
+      navigationBarHidden:true,
+      passProps: { videoSRC: 'https://s3.amazonaws.com/sskick/Dancing+with+richard+simmons%2C+sweating+to+the+oldies!.mp4' }
+    })
+  }
+
+  determineMilliseconds(timeIndex) {
+    console.log(timeIndex)
+    let milliseconds = timeIndex * 60000 * 2;
+    console.log(milliseconds)
+    return milliseconds
   }
 
   render() {
@@ -161,7 +195,7 @@ export default class DrillLaunch extends Component {
               </View>
               </View>
             </View>
-            <View style={{flex:1, justifyContent:'space-between', alignItems:'center'}}><View style={drillLaunchStyles.startContainer}><Text style={{color:'white'}}>Start Drill</Text></View></View>
+            <View style={{flex:1, justifyContent:'space-between', alignItems:'center'}}><TouchableHighlight onPress={()=>{this.runDrill()}}><View style={drillLaunchStyles.startContainer}><Text style={{color:'white'}}>Start Drill</Text></View></TouchableHighlight></View>
             </View>
           </View>
           </Image>

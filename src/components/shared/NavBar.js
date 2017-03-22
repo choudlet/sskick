@@ -3,6 +3,7 @@ import {View, Text, TouchableHighlight, Picker, PickerIOS, Modal, Image, Dimensi
 import Icon from 'react-native-vector-icons/FontAwesome';
 import navBarStyles from './navBarStyle';
 
+
 export default class NavBar extends Component {
 
   goBack() {
@@ -24,7 +25,7 @@ componentWillMount() {
 
       </View>
       <View style={navBarStyles.container}>
-        <Text style={navBarStyles.textStyle}>Player</Text>
+        <Text style={navBarStyles.textStyle}>Soccer SideKick</Text>
         </View>
         <View style={navBarStyles.container}>
           <TouchableHighlight onPress={()=>this.props.showNavModal()}>
