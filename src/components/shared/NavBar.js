@@ -10,7 +10,7 @@ export default class NavBar extends Component {
   }
 
 componentWillMount() {
-  console.log(this.props);
+
 }
 
   render() {
@@ -19,7 +19,7 @@ componentWillMount() {
       <View style={navBarStyles.navBar}>
       <View style={navBarStyles.container}>
         <TouchableHighlight onPress={()=>{this.goBack()}}>
-      <Icon name="arrow-left" size={30} style={navBarStyles.arrow}/>
+      <Icon name="angle-left" size={30} style={navBarStyles.arrow}/>
       </TouchableHighlight>
 
       </View>

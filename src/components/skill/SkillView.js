@@ -3,29 +3,35 @@ import {View, Text,TouchableHighlight, Image} from 'react-native';
 import NavBar from '../shared/NavBar';
 import skillStyles from './skillStyle';
 import DrillLaunch from '../DrillLaunch/DrillLaunch.js'
+import Spinner from 'react-native-spinkit';
 export default class SkillView extends Component {
 
   constructor() {
     super()
     this.state= {
-      currentDrill: undefined
+      currentDrill: undefined,
+      imageLoad:false
     }
   }
 
   transitionToDrill(skill) {
-    this.setState({
-      currentDrill:skill
-    })
+    console.log('skill');
     this.props.navigator.push({
       component:DrillLaunch,
       navigationBarHidden:true,
       passProps: {
-        currentDrill: this.state.currentDrill
+        currentDrill: skill,
+        levelImageUrl:this.props.selectedLevelandSkills.backgroundImageUrl
       }
     })
 
   }
 
+  imageLoadSuccess() {
+    this.setState({
+      imageLoad:true
+    })
+  }
   render() {
     let skillLists = this.props.selectedLevelandSkills.Skills.map(element=> {
         return <TouchableHighlight
@@ -40,11 +46,26 @@ export default class SkillView extends Component {
 
     return(
       <View>
-      <NavBar navigation={this.props.navigation}></NavBar>
-
+      <NavBar navigator={this.props.navigator}></NavBar>
+      <Image
+        source={require('../../assets/images/stadium.jpg')}
+        style={{width:null,height:null}}
+        >
+      <View style={{justifyContent:'center', alignItems:'center'}}>
+        {this.state.imageLoad ? null :
+          <Spinner
+            size={100}
+            color='#64AE20'
+            style="Wave"
+            style={{marginTop:'50%'}}
+             />
+        }
+        </View>
+      <View style={{opacity: this.state.imageLoad? 1:0}}>
       <Image
         style={skillStyles.containerImage}
         source={{uri:this.props.selectedLevelandSkills.backgroundImageUrl}}
+        onLoad={()=>{this.imageLoadSuccess()}}
         >
         <View style={skillStyles.magicWrapper}>
         <View style={skillStyles.introWrapper}>
@@ -56,6 +77,8 @@ export default class SkillView extends Component {
         </View>
       </View>
       </Image>
+    </View>
+    </Image>
     </View>
     )
   }
