@@ -2,16 +2,18 @@ import React, {Component} from 'React';
 import {View, Text, TouchableHighlight, Picker, PickerIOS, Modal, Image, Dimensions,StatusBar} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import navBarStyles from './navBarStyle';
+import * as loginActions from '../../actions/loginActions'
+import {connect} from 'react-redux';
 
+ class NavBar extends Component {
 
-export default class NavBar extends Component {
 
   goBack() {
     this.props.navigator.pop()
   }
 
 componentWillMount() {
-
+  console.log(this.state)
 }
 
   render() {
@@ -25,7 +27,7 @@ componentWillMount() {
 
       </View>
       <View style={navBarStyles.container}>
-        <Text style={navBarStyles.textStyle}>Soccer SideKick</Text>
+        <Text style={navBarStyles.textStyle}>Player</Text>
         </View>
         <View style={navBarStyles.container}>
           <TouchableHighlight onPress={()=>this.props.showNavModal()}>
@@ -40,3 +42,19 @@ componentWillMount() {
 
 
   }
+
+  const mapStateToProps = (state) => {
+    return {
+      currentUser: state.userData
+    }
+  }
+
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      logOutUser: (data) => {
+        dispatch(loginActions.logOutUser(data));
+      }
+    }
+  }
+
+  export default connect(mapStateToProps, mapDispatchToProps)(NavBar)

@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 
 export function FBLogInSuccess(userData) {
+  console.log(userData);
     return {
         type: types.FB_LOGIN_SUCCESS,
         userData
@@ -45,4 +46,8 @@ export function FBLogInRequest(fbAccessData) {
                 })
         })
     }
+}
+
+export function logOutUser(currentUser) {
+  return {type:types.LOG_OUT_USER, currentUser}
 }

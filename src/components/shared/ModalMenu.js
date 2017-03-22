@@ -6,11 +6,11 @@ import modalStyles from './modalStyle';
 export default class ModalMenu extends Component {
 
 
+  logOut() {
+    
+  }
+
   render() {
-
-
-
-
 
 
 return (
@@ -28,7 +28,7 @@ return (
           <Text style={modalStyles.basicFont}>Edit Profile</Text>
           <Text style={modalStyles.basicFont}>Video Library</Text>
           <Text style={modalStyles.basicFont}>Visit Leaderboards</Text>
-          <Text style={modalStyles.basicFont}>Logout</Text>
+          <TouchableHighlight onPress={()=>{this.logOut()}}><Text style={modalStyles.basicFont}>Logout</Text></TouchableHighlight>
           <TouchableHighlight onPress={() => {
             this.props.hideNavModal()
           }}>
