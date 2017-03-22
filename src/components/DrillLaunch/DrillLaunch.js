@@ -12,13 +12,13 @@ export default class DrillLaunch extends Component {
     super()
     this.state = {
       imageLoad:false,
-      currentTime: '2:00',
+      currentTime: undefined,
       timeIterator: 1
     }
   }
 
-  componentDidMount() {
-    console.log(this.props);
+  componentWillMount() {
+    this.updateTime(this.state.timeIterator)
   }
 
   imageLoadSuccess() {
