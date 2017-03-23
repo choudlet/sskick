@@ -23,12 +23,15 @@ export default class SkillView extends Component {
       navigationBarHidden:true,
       passProps: {
         currentDrill: skill,
-        levelImageUrl:this.props.selectedLevelandSkills.backgroundImageUrl
+        levelImageUrl:this.props.selectedLevelandSkills.backgroundImageUrl,
+        levelId: this.props.selectedLevelandSkills.id
       }
     })
 
   }
 
+componentDidMount() {
+}
   imageLoadSuccess() {
     this.setState({
       imageLoad:true

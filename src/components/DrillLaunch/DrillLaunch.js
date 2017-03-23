@@ -38,18 +38,24 @@ export default class DrillLaunch extends Component {
 
   increaseMinutes() {
     console.log('INCREASE')
+    console.log(this.state.timerIterator)
     this.setState({
       timeIterator: this.state.timeIterator + 1
-    });
-    this.updateTime(this.state.timeIterator)
-  }
+    }, ()=>{
+        this.updateTime(this.state.timeIterator)
+    })
+}
+
+
 
   decreaseMinutes() {
     console.log('DECREASE')
     this.setState({
       timeIterator: this.state.timeIterator - 1
-    });
-    this.updateTime(this.state.timeIterator)
+    }, ()=>{
+        this.updateTime(this.state.timeIterator)
+      }
+  );
   }
 
 
@@ -114,20 +120,17 @@ export default class DrillLaunch extends Component {
   }
 
   runDrill() {
-    // this.props.navigator.push({
-    //   component: DrillRun,
-    //   navigationBarHidden:true,
-    //   passProps: {
-    //     drillTime: this.determineMilliseconds(this.state.timeIterator),
-    //     drill: this.props.currentDrill
-    //   }
-    // })
-
     this.props.navigator.push({
-      component: VideoPlay,
+      component: DrillRun,
       navigationBarHidden:true,
-      passProps: { videoSRC: 'https://s3.amazonaws.com/sskick/Dancing+with+richard+simmons%2C+sweating+to+the+oldies!.mp4' }
+      passProps: {
+        drillTime: this.determineMilliseconds(this.state.timeIterator),
+        drill: this.props.currentDrill,
+        levelImageUrl:this.props.levelImageUrl,
+        levelId: this.props.levelId
+      }
     })
+
   }
 
   determineMilliseconds(timeIndex) {
