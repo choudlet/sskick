@@ -4,7 +4,8 @@ import NavBar from '../shared/NavBar';
 import drillResultStyles from './DrillResultStyle';
 import DrillLaunch from '../DrillLaunch/DrillLaunch'
 import serverPath from '../../config/devProd';
-import SkillView from '../Skill/SkillView'
+import SkillView from '../Skill/SkillView';
+import Spinner from 'react-native-spinkit';
 
 
 
@@ -14,16 +15,24 @@ export default class DrillResult extends Component {
     super(props)
     this.state={
       minutes:undefined,
-      seconds:undefined
+      seconds:undefined,
+      imageLoad:false
     }
   }
 
+  imageLoadSuccess() {
+    this.setState({
+      imageLoad:true
+    })
+  }
+
   componentWillMount() {
-    this.formatTime(this.props.remainingTime, this.props.levelId)
+    console.log(this.props)
+    this.formatTime(this.props.remainingTime, this.props.totalTime)
   }
 
   formatTime(remainingTime, totalTime) {
-    console.log(remainingTime,totalTime)
+    console.log(totalTime, remainingTime)
     let time = totalTime - remainingTime
     if (time % 60000 != time) {
       let minutesRemaining = Math.floor(time/60000).toString();
@@ -45,6 +54,7 @@ export default class DrillResult extends Component {
       if(secondsTime.length==1) {
         secondsTime = '0' + secondsTime
       }
+      console.log(minutesRemaining)
       this.setState({
         minutes: minutesRemaining,
         seconds: secondsTime
@@ -88,10 +98,28 @@ export default class DrillResult extends Component {
 
       <View>
       <NavBar navigator={this.props.navigator}/>
+        <Image
+          source={require('../../assets/images/stadium.jpg')}
+          style={{width:'100%',height:'100%'}}
+          >
+            {
+              this.state.imageLoad ? null :
+        <View style={{justifyContent:'center', alignItems:'center'}}>
+            <Spinner
+              size={100}
+              color='#64AE20'
+              style="Wave"
+              style={{marginTop:'50%'}}
+               />
+          </View>
+          }
+          <View style={{opacity:this.state.imageLoad?1:0}}>
       <Image
-        source={require('../../assets/images/SoccerBackground.jpg')}
+        source={{uri:this.props.levelImageUrl}}
         style={drillResultStyles.backgroundImage}
+        onLoad={()=>this.imageLoadSuccess()}
         >
+        <View style={drillResultStyles.magicWrapper}>
         <View style={{alignItems:'center', justifyContent:'center', backgroundColor:'transparent'}}>
         <View style={{justifyContent:'center', alignItems:'center', backgroundColor:'transparent', marginTop:20, width:'80%'}}>
               <Text style={{fontSize:30, fontFamily:'Octin Sports', color:'white'}}>Skill Complete!</Text>
@@ -103,7 +131,10 @@ export default class DrillResult extends Component {
             <TouchableHighlight style={{marginTop:20}} onPress={()=>this.transitionToLevel()}><View style={drillResultStyles.borderBox}><Text style={{color:'white'}}>Back to Level?</Text></View></TouchableHighlight>
           </View>
         </View>
+      </View>
     </Image>
+    </View>
+  </Image>
       </View>
     )
   }

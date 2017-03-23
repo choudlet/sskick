@@ -15,8 +15,15 @@ export default StyleSheet.create({
   width:'80%',
   height:40,
   borderWidth:5,
-  borderColor: '#64AE20',
+  borderColor: 'white',
   justifyContent:'center',
+  alignItems:'center'
+},
+magicWrapper: {
+  backgroundColor: 'rgba(39,39,41,.7)',
+  height:'100%',
+  width:'100%',
+  justifyContent:'flex-start',
   alignItems:'center'
 }
 });
