@@ -13,7 +13,7 @@ export default StyleSheet.create({
   },
   borderBox: {
   width:'80%',
-  height:40,
+  height:80,
   borderWidth:5,
   borderColor: 'white',
   justifyContent:'center',

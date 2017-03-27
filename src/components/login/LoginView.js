@@ -10,6 +10,7 @@ import {connect} from 'react-redux';
 import * as loginActions from '../../actions/loginActions'
 import LoadingSpinner from '../shared/LoadingSpinner';
 import TutorialPlayer from '../TutorialPlayer/TutorialPlayer';
+import EmailCreate from '../EmailLogCreate/EmailCreate'
 
  class LoginView extends Component {
 
@@ -25,14 +26,21 @@ import TutorialPlayer from '../TutorialPlayer/TutorialPlayer';
      })
    }
 
+   transitionToEmailCreate() {
+     this.props.navigator.push({
+       component: EmailCreate,
+       navigationBarHidden:true,
+     })
+   }
+
   triggerEmailLogin() {
     console.log('Trying Email Login')
 }
 
   triggerEmailAccountCreate() {
     console.log('Attempting Account Create')
-    this.transitionToTutorial();
-    // this.transitionLogin();
+    this.transitionToEmailCreate();
+
   }
 
   triggerFBSignIn() {

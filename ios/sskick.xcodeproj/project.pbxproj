@@ -26,6 +26,8 @@
 		046616411E78743A0010C2B8 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 046616401E78743A0010C2B8 /* FontAwesome.ttf */; };
 		046616421E78743A0010C2B8 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 046616401E78743A0010C2B8 /* FontAwesome.ttf */; };
 		04C80EF51E8306CB002C8F7A /* SideKickLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 04C80EF41E8306CB002C8F7A /* SideKickLogo.png */; };
+		04C80F4F1E8483E7002C8F7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C80F4E1E8483E7002C8F7A /* Assets.xcassets */; };
+		04C80F511E8484C8002C8F7A /* Backyard Basics.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04C80F501E8484C8002C8F7A /* Backyard Basics.jpg */; };
 		09367AA8C44F42D998BB7A04 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2000257DB32F460FA16325D4 /* Zocial.ttf */; };
 		120DA7CF8C1A44CAB78776A2 /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBCBAE54D8D44BA08945E56D /* libRCTFBSDK.a */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
@@ -315,6 +317,8 @@
 		046616191E7789D10010C2B8 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		046616401E78743A0010C2B8 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 		04C80EF41E8306CB002C8F7A /* SideKickLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SideKickLogo.png; sourceTree = "<group>"; };
+		04C80F4E1E8483E7002C8F7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		04C80F501E8484C8002C8F7A /* Backyard Basics.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Backyard Basics.jpg"; sourceTree = "<group>"; };
 		1135CECC6C544344B36547AB /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		13239341405E47709DB5F661 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
@@ -582,6 +586,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				04C80F4E1E8483E7002C8F7A /* Assets.xcassets */,
+				04C80F501E8484C8002C8F7A /* Backyard Basics.jpg */,
 			);
 			name = sskick;
 			sourceTree = "<group>";
@@ -1109,9 +1115,11 @@
 				046615E41E7785A60010C2B8 /* octin sports rg.ttf in Resources */,
 				046616411E78743A0010C2B8 /* FontAwesome.ttf in Resources */,
 				413F7A0F38774B84B13117B6 /* Entypo.ttf in Resources */,
+				04C80F4F1E8483E7002C8F7A /* Assets.xcassets in Resources */,
 				C33E4FD1AB7D4CAA9A5926E6 /* EvilIcons.ttf in Resources */,
 				04C80EF51E8306CB002C8F7A /* SideKickLogo.png in Resources */,
 				B8CEDF80C6AE40F28B235B13 /* FontAwesome.ttf in Resources */,
+				04C80F511E8484C8002C8F7A /* Backyard Basics.jpg in Resources */,
 				C351CA86C5EC45879459F911 /* Foundation.ttf in Resources */,
 				CDACB00B94F043FCB996A2CC /* Ionicons.ttf in Resources */,
 				76C51C42E351444592049737 /* MaterialCommunityIcons.ttf in Resources */,

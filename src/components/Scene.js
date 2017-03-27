@@ -34,7 +34,7 @@ hideNavModal() {
     console.log('Render of Scene is Run')
   return (
     <View style={{flex:1, alignSelf:'stretch'}}>
-
+      <StatusBar hidden={true}/>
       <NavigatorIOS
       style={{flex: 1, alignSelf: 'stretch', backgroundColor:'red'}}
        initialRoute={{

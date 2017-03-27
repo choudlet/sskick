@@ -124,11 +124,11 @@ export default class DrillResult extends Component {
         <View style={{justifyContent:'center', alignItems:'center', backgroundColor:'transparent', marginTop:20, width:'80%'}}>
               <Text style={{fontSize:30, fontFamily:'Octin Sports', color:'white'}}>Skill Complete!</Text>
               <Text style={{fontSize:15, color:'white'}}>You Practiced the {this.props.drill.name} for:</Text>
-              <Text style={{ fontSize:20, color:'white'}}>{this.state.minutes} : {this.state.seconds}</Text>
+              <Text style={{ fontSize:20, color:'white', marginTop:10}}>{this.state.minutes} : {this.state.seconds}</Text>
           </View>
           <View style={{marginTop:60, alignItems:'center', justifyContent:'center'}}>
-            <TouchableHighlight style={{marginTop:20}} onPress={()=>{this.transitionToDrill()}}><View style={drillResultStyles.borderBox}><Text style={{color:'white'}}>Practice Again?</Text></View></TouchableHighlight>
-            <TouchableHighlight style={{marginTop:20}} onPress={()=>this.transitionToLevel()}><View style={drillResultStyles.borderBox}><Text style={{color:'white'}}>Back to Level?</Text></View></TouchableHighlight>
+            <TouchableHighlight style={{marginTop:20}} onPress={()=>{this.transitionToDrill()}}><View style={drillResultStyles.borderBox}><Text style={{color:'white'}}>Practice Again</Text></View></TouchableHighlight>
+            <TouchableHighlight style={{marginTop:20}} onPress={()=>this.transitionToLevel()}><View style={drillResultStyles.borderBox}><Text style={{color:'white'}}>Back to Level</Text></View></TouchableHighlight>
           </View>
         </View>
       </View>

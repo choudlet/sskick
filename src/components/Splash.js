@@ -26,7 +26,6 @@ export default class Splash extends React.Component {
         style={styles.containerImage}
         source={require('../assets/images/SoccerBackground.jpg')}
         >
-        <StatusBar hidden={true} />
         <View style={styles.colorContainer}>
           <View style={{flex:1}}></View>
           <View style={{flex:3, backgroundColor:'transparent'}}>
