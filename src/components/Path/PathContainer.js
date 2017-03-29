@@ -35,7 +35,8 @@ constructor(props) {
         component:LevelView,
         navigationBarHidden:true,
         passProps: {
-          selectedPathAndLevels: this.state.selectedPathAndLevels
+          selectedPathAndLevels: this.state.selectedPathAndLevels,
+          showNavModal: this.props.showNavModal
         }
       })
     })
@@ -56,7 +57,7 @@ constructor(props) {
           source={require('../../assets/images/stadium.jpg')}
           style={pathStyles.containerImage}
           >
-        <NavBar navigator={this.props.navigator}></NavBar>
+        <NavBar navigator={this.props.navigator} showNavModal={this.props.showNavModal}></NavBar>
         <View style={pathStyles.introContainer}>
           <Text style={pathStyles.headText}>The Path To Pro</Text>
           <View style={pathStyles.borderLine}></View>

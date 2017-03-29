@@ -17,7 +17,7 @@ export default class LevelView extends Component {
     }
   }
 
-  transitionToLevel(level) {
+  transitionToSkill(level) {
     return fetch(`${serverPath}level/${level.id}`)
     .then((data)=> {
       return data.json()
@@ -29,7 +29,8 @@ export default class LevelView extends Component {
         component:SkillView,
         navigationBarHidden:true,
         passProps: {
-          selectedLevelandSkills: this.state.selectedLevelandSkills
+          selectedLevelandSkills: this.state.selectedLevelandSkills,
+          showNavModal: this.props.showNavModal
         }
       })
     })
@@ -49,7 +50,7 @@ export default class LevelView extends Component {
 
   render() {
     let levelContent = this.props.selectedPathAndLevels.Levels.map(level=>{
-      return <TouchableHighlight   key={level.id} onPress={()=>{this.transitionToLevel(level)}}><Image
+      return <TouchableHighlight   key={level.id} onPress={()=>{this.transitionToSkill(level)}}><Image
         source={{uri:level.backgroundImageUrl}}
         style={levelStyles.containerImage}
         onLoad={()=>{this.imageSuccess()}}
@@ -62,7 +63,7 @@ export default class LevelView extends Component {
     })
     return(
       <View>
-      <NavBar navigator={this.props.navigator}/>
+      <NavBar navigator={this.props.navigator} showNavModal={this.props.showNavModal}/>
       <Image
         source={require('../../assets/images/FieldBackground.jpg')}
         style={levelStyles.backgroundImage}

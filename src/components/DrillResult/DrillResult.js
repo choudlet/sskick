@@ -97,7 +97,7 @@ export default class DrillResult extends Component {
     return (
 
       <View>
-      <NavBar navigator={this.props.navigator}/>
+      <NavBar navigator={this.props.navigator} showNavModal={this.props.showNavModal}/>
         <Image
           source={require('../../assets/images/stadium.jpg')}
           style={{width:'100%',height:'100%'}}

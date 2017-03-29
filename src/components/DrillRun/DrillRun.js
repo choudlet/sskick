@@ -29,7 +29,8 @@ export default class DrillRun extends Component {
         totalTime:this.props.drillTime,
         drill: this.props.drill,
         levelImageUrl: this.props.levelImageUrl,
-        levelId: this.props.levelId
+        levelId: this.props.levelId,
+        showNavModal: this.props.showNavModal
       }
     })
   }

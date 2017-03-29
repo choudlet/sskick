@@ -38,24 +38,18 @@ export default class DrillLaunch extends Component {
 
   increaseMinutes() {
     console.log('INCREASE')
-    console.log(this.state.timerIterator)
     this.setState({
       timeIterator: this.state.timeIterator + 1
-    }, ()=>{
-        this.updateTime(this.state.timeIterator)
-    })
-}
-
-
+    });
+    this.updateTime(this.state.timeIterator)
+  }
 
   decreaseMinutes() {
     console.log('DECREASE')
     this.setState({
       timeIterator: this.state.timeIterator - 1
-    }, ()=>{
-        this.updateTime(this.state.timeIterator)
-      }
-  );
+    });
+    this.updateTime(this.state.timeIterator)
   }
 
 
@@ -125,28 +119,24 @@ export default class DrillLaunch extends Component {
       navigationBarHidden:true,
       passProps: {
         drillTime: this.determineMilliseconds(this.state.timeIterator),
-        drill: this.props.currentDrill,
-        levelImageUrl:this.props.levelImageUrl,
-        levelId: this.props.levelId,
-        showNavModal:this.props.showNavModal
+        drill = this.props.currentDrill
       }
     })
-
   }
 
-  determineMilliseconds(timeIndex) {
-    console.log(timeIndex)
-    let milliseconds = timeIndex * 60000 * 2;
+  determineMilliseconds()
+
+  render(timeIndex) {
+    let milliseconds = this.state.timeIterator * 60000 * 2;
     console.log(milliseconds)
     return milliseconds
-  }
 
-  render() {
+  }
 
 
     return (
       <View>
-      <NavBar navigator={this.props.navigator} showNavModal={this.props.showNavModal}></NavBar>
+      <NavBar navigator={this.props.navigator}></NavBar>
         <Image
           source={require('../../assets/images/stadium.jpg')}
           style={{width:'100%',height:'100%'}}

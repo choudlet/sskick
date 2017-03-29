@@ -7,7 +7,7 @@ export default class ModalMenu extends Component {
 
 
   logOut() {
-    
+
   }
 
   render() {
@@ -23,7 +23,7 @@ return (
         style={{width:'100%',height:'100%'}}
         >
         <BlurView blurType="dark" blurAmount={10} style={{width:'100%',height:'100%'}}>
-       <View style={{marginTop: 60, alignItems:'center', justifyContent:'center'}}>
+       <View style={{marginTop: '50%', alignItems:'center', justifyContent:'center'}}>
         <View style={{justifyContent:'center', alignItems:'center'}}>
           <Text style={modalStyles.basicFont}>Edit Profile</Text>
           <Text style={modalStyles.basicFont}>Video Library</Text>

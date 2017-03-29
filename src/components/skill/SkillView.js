@@ -24,7 +24,8 @@ export default class SkillView extends Component {
       passProps: {
         currentDrill: skill,
         levelImageUrl:this.props.selectedLevelandSkills.backgroundImageUrl,
-        levelId: this.props.selectedLevelandSkills.id
+        levelId: this.props.selectedLevelandSkills.id,
+        showNavModal: this.props.showNavModal
       }
     })
 
@@ -51,7 +52,7 @@ componentDidMount() {
 
     return(
       <View>
-      <NavBar navigator={this.props.navigator}></NavBar>
+      <NavBar navigator={this.props.navigator} showNavModal={this.props.showNavModal}></NavBar>
       <Image
         source={require('../../assets/images/stadium.jpg')}
         style={{width:null,height:null}}

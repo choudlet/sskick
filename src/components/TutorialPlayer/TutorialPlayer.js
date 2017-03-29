@@ -32,7 +32,7 @@ export default class TutorialPlayer extends Component {
     this.props.navigator.push({
       component:PathContainer,
       navigationBarHidden:true,
-      passProps: {paths:this.state.paths, pathsNumber:this.state.pathsNumber}
+      passProps: {paths:this.state.paths, pathsNumber:this.state.pathsNumber, showNavModal: this.props.showNavModal}
     })
   }
 
