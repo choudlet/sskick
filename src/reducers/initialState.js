@@ -1,4 +1,4 @@
 export default {
 currentUser: {},
-numAjaxCallsInProgress:0
+numberAjax:0
 };

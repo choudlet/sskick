@@ -1,11 +1,10 @@
 import { combineReducers } from "redux";
-import loginReducer from './loginReducer';
-import ajaxStatusReducer from './ajaxStatusReducer';
+import currentUser from './loginReducer';
+import numberAjax from './ajaxStatusReducer';
 
 const rootReducer = combineReducers({
-  loginReducer,
-  ajaxStatusReducer
-
+  currentUser,
+  numberAjax
 });
 
 export default rootReducer;

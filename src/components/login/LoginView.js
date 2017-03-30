@@ -10,7 +10,7 @@ import {connect} from 'react-redux';
 import * as loginActions from '../../actions/loginActions'
 import LoadingSpinner from '../shared/LoadingSpinner';
 import TutorialPlayer from '../TutorialPlayer/TutorialPlayer';
-import EmailCreate from '../EmailLogCreate/EmailCreate'
+import EmailCreate from '../EmailLogCreate/EmailCreate';
 
  class LoginView extends Component {
 

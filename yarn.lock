@@ -2939,6 +2939,10 @@ react-native-oauth@latest:
     invariant "^2.2.1"
     valib "^2.0.0"
 
+react-native-simple-toast@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/react-native-simple-toast/-/react-native-simple-toast-0.0.5.tgz#8530a9d0696613ad25bc5d4283f1e3c541ec2bc4"
+
 react-native-spinkit@latest:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/react-native-spinkit/-/react-native-spinkit-1.0.2.tgz#0d31b019556e038aa8e953038562550cb0ead8d2"

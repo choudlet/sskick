@@ -1,24 +1,23 @@
 import * as types from './actionTypes';
-import {
-    LoginManager
-} from 'react-native-fbsdk';
+import {LoginManager} from 'react-native-fbsdk';
 import {
     beginAjaxCall,
     ajaxCallSuccess
 } from './ajaxStatusActions';
 import serverPath from '../config/devProd.js'
-import {
-    AsyncStorage
-} from 'react-native';
+import {AsyncStorage} from 'react-native';
 
 export function FBLogInSuccess(userData) {
-  console.log(userData);
     return {
         type: types.FB_LOGIN_SUCCESS,
         userData
     }
 }
 
+export function emailCreateSuccess(userData) {
+  return {type:types.EMAIL_CREATE_SUCCESS,
+          userData}
+}
 
 
 export function FBLogInRequest(fbAccessData) {
@@ -38,16 +37,18 @@ export function FBLogInRequest(fbAccessData) {
                 .then((data) => {
                     dispatch(ajaxCallSuccess());
                     dispatch(FBLogInSuccess(data));
-                    try {
-                         AsyncStorage.setItem('@SSKickStorage:currentUser', data.id.toString());
-                    } catch (error) {
-                        console.log('Could Not Store');
-                    }
                 })
         })
     }
 }
 
+export function emailCreateAttempt(userFormData) {
+  return function(dispatch) {
+  dispatch(beginAjaxCall())
+  dispatch(emailCreateSuccess(userFormData))
+}
+}
+
 export function logOutUser(currentUser) {
-  return {type:types.LOG_OUT_USER, currentUser}
+
 }
