@@ -12,8 +12,8 @@ import {connect} from 'react-redux';
     this.props.navigator.pop()
   }
 
-componentWillMount() {
-  console.log(this.state)
+componentDidMount() {
+  console.log(this.props)
 }
 
   render() {
@@ -45,7 +45,7 @@ componentWillMount() {
 
   const mapStateToProps = (state) => {
     return {
-      currentUser: state.userData
+      currentUser: state.currentUser
     }
   }
 

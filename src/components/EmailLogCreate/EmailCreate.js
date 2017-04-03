@@ -102,7 +102,7 @@ class EmailCreate extends Component {
                             justifyContent: 'center'
                         }}>
                             {this.props.numberAjax != 0
-                                ? <Spinner color='#64AE20' style="Wave" size={30}></Spinner>
+                                ? <Spinner color='#64AE20' style="Wave" size={60}></Spinner>
                                 : <View style={emailStyles.borderLine}></View>}
                         </View>
                         <View style={{

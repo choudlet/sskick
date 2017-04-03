@@ -16,9 +16,6 @@ export function emailLogSuccess(userData) {
     return {type: types.EMAIL_LOG_SUCCESS, userData}
 }
 
-export function emailLogFailure() {
-  return {type:types.EMAIL_LOG_FAILURE}
-}
 
 export function FBLogInRequest(fbAccessData) {
     return function(dispatch) {
@@ -61,6 +58,7 @@ export function emailCreateAttempt(userFormData) {
 
 export function emailLogAttempt(userData) {
     return function(dispatch) {
+      dispatch(beginAjaxCall())
       return fetch(`${serverPath}emailLogAttempt`, {
           method: 'POST',
           headers: {
@@ -68,6 +66,15 @@ export function emailLogAttempt(userData) {
               'Content-Type': 'application/json'
           },
           body: JSON.stringify({userData})
+      }).then(response=>{
+        return response.json().then(data => {
+          dispatch(ajaxCallSuccess())
+          if (data.user) {
+            dispatch(emailLogSuccess(data.user));
+          }
+          return data
+
+        })
       })
     }
 }

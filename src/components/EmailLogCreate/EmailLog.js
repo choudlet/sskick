@@ -31,7 +31,7 @@ class EmailLog extends Component {
       } else if (!(/^\S+@\S+\.\S+$/).test(this.state.email)) {
         this.setState({feedbackMSG: 'Not a valid Email'})
     } else if (this.state.email || this.state.password) {
-        this.setState({feedbackMSG: 'Creating Account', formComplete: true})
+        this.setState({feedbackMSG: 'Attempting Login', formComplete: true})
 
     }
 
@@ -41,9 +41,23 @@ class EmailLog extends Component {
             email: this.state.email,
             password: this.state.password,
         }
-        this.props.emailLogAttempt(userObj)
-          //this.transitionToTutorial()
+        this.props.emailLogAttempt(userObj).then((response)=>{
+          Toast.show(response.message)
+          if(response.user) {
+            this.transitionToTutorial();
+          }
+        })
     }
+  }
+
+  transitionToTutorial() {
+    this.props.navigator.push({
+      component: TutorialPlayer,
+      navigationBarHidden:true,
+      passProps: {
+        showNavModal: this.props.showNavModal
+      }
+    });
   }
 
   render() {
@@ -78,7 +92,7 @@ class EmailLog extends Component {
                       justifyContent: 'center'
                   }}>
                       {this.props.numberAjax != 0
-                          ? <Spinner color='#64AE20' style="Wave" size={30}></Spinner>
+                          ? <Spinner color='#64AE20' style="Wave" size={60}></Spinner>
                           : <View style={emailStyles.borderLine}></View>}
                   </View>
                   <View style={{
