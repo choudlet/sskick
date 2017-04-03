@@ -61,9 +61,14 @@ export function emailCreateAttempt(userFormData) {
       console.log(data);
       dispatch(ajaxCallSuccess());
       dispatch(emailCreateSuccess(data))
+      return data
     })
   })
 }
+}
+
+export function emailLogAttempt(userData) {
+  console.log(userData);
 }
 
 export function logOutUser(currentUser) {

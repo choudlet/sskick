@@ -30,6 +30,9 @@ import EmailCreate from '../EmailLogCreate/EmailCreate';
      this.props.navigator.push({
        component: EmailCreate,
        navigationBarHidden:true,
+       passProps: {
+         showNavModal: this.props.showNavModal
+       }
      })
    }
 

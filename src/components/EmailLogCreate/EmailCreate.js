@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {View, Text, Image, TextInput, TouchableOpacity} from 'react-native';
-import NavBar from '../shared/NavBar'
 import emailStyles from './EmailStyle'
 import Toast from 'react-native-simple-toast';
 import {connect} from 'react-redux'
 import Spinner from 'react-native-spinkit';
-import * as loginActions from '../../actions/loginActions'
+import * as loginActions from '../../actions/loginActions';
+import TutorialPlayer from '../TutorialPlayer/TutorialPlayer'
 
 class EmailCreate extends Component {
 
@@ -21,6 +21,16 @@ class EmailCreate extends Component {
         }
     }
 
+    transitionToTutorial() {
+      this.props.navigator.push({
+        component: TutorialPlayer,
+        navigationBarHidden:true,
+        passProps: {
+          showNavModal: this.props.showNavModal
+        }
+
+    });
+  }
     submitUserInfo() {
         if (!this.state.email || !this.state.password || !this.state.displayName || !this.state.password2) {
             this.setState({feedbackMSG: 'Please Enter All Fields'})
@@ -43,17 +53,18 @@ class EmailCreate extends Component {
             }
             console.log(userObj)
             this.props.emailCreateAttempt(userObj)
+              this.transitionToTutorial()
         }
     }
-    componentDidMount() {
-        console.log(this.props);
+
+    goBack() {
+      this.props.navigator.pop();
     }
 
     render() {
         return (
             <Image source={require('../../assets/images/stadium.jpg')} style={emailStyles.containerImage}>
                 <View style={emailStyles.darkenBox}>
-                    <NavBar navigator={this.props.navigator}/>
                     <View style={emailStyles.mainContent}>
                         <View style={{
                             flex: 1
@@ -107,6 +118,7 @@ class EmailCreate extends Component {
                                 </TouchableOpacity>
                             </View>
                         </View>
+                        <TouchableOpacity onPress={()=>{this.goBack()}}style={{marginBottom:'10%'}}><Text style={{color:'white'}}>Go Back</Text></TouchableOpacity>
                     </View>
                 </View>
             </Image>
