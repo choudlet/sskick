@@ -51,9 +51,9 @@ class EmailCreate extends Component {
                 password: this.state.password,
                 displayName: this.state.displayName
             }
-            console.log(userObj)
-            this.props.emailCreateAttempt(userObj)
+            this.props.emailCreateAttempt(userObj).then(()=>{
               this.transitionToTutorial()
+            })
         }
     }
 
@@ -133,8 +133,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         emailCreateAttempt: (data) => {
-            console.log('Running from props')
-            dispatch(loginActions.emailCreateAttempt(data));
+            return dispatch(loginActions.emailCreateAttempt(data));
         }
     }
 }

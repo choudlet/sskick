@@ -11,6 +11,7 @@ import * as loginActions from '../../actions/loginActions'
 import Spinner from 'react-native-spinkit'
 import TutorialPlayer from '../TutorialPlayer/TutorialPlayer';
 import EmailCreate from '../EmailLogCreate/EmailCreate';
+import EmailLog from '../EmailLogCreate/EmailLog';
 
  class LoginView extends Component {
 
@@ -36,12 +37,22 @@ import EmailCreate from '../EmailLogCreate/EmailCreate';
      })
    }
 
+   transitionToEmailLog() {
+     this.props.navigator.push({
+       component: EmailLog,
+       navigationBarHidden:true,
+       passProps: {
+         showNavModal: this.props.showNavModal
+       }
+     })
+   }
+
   triggerEmailLogin() {
-    console.log('Trying Email Login')
+    this.transitionToEmailLog();
 }
 
   triggerEmailAccountCreate() {
-    console.log('Attempting Account Create')
+
     this.transitionToEmailCreate();
 
   }

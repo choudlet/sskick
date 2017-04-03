@@ -7,6 +7,8 @@ export default function currentUser(state=initialState, action) {
       return Object.assign({}, state, action.userData)
     case types.EMAIL_CREATE_SUCCESS:
       return Object.assign({}, state,action.userData)
+    case types.EMAIL_LOG_SUCCESS:
+      return Object.assign({},state,action.userData)
   default:
     return state;
 }

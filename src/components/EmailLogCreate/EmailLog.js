@@ -15,7 +15,9 @@ class EmailLog extends Component {
     super()
     this.state = {
       email:null,
-      password:null
+      password:null,
+      feedbackMSG:null,
+      formComplete:false
     }
   }
 
@@ -24,7 +26,24 @@ class EmailLog extends Component {
   }
 
   submitLogin() {
-    console.log(this.state.email, this.state.password)
+    if (!this.state.email || !this.state.password) {
+        this.setState({feedbackMSG: 'Please Enter All Fields'})
+      } else if (!(/^\S+@\S+\.\S+$/).test(this.state.email)) {
+        this.setState({feedbackMSG: 'Not a valid Email'})
+    } else if (this.state.email || this.state.password) {
+        this.setState({feedbackMSG: 'Creating Account', formComplete: true})
+
+    }
+
+    Toast.show(this.state.feedbackMSG)
+    if (this.state.formComplete) {
+        let userObj = {
+            email: this.state.email,
+            password: this.state.password,
+        }
+        this.props.emailLogAttempt(userObj)
+          //this.transitionToTutorial()
+    }
   }
 
   render() {
@@ -33,7 +52,8 @@ class EmailLog extends Component {
           <View style={emailStyles.darkenBox}>
               <View style={emailStyles.mainContent}>
                   <View style={{
-                      flex: 1
+                      flex: 1,
+                      alignItems:'center'
                   }}>
                       <Text style={emailStyles.headerText}>Please Login</Text>
                       <View style={{
@@ -44,12 +64,12 @@ class EmailLog extends Component {
                               this.setState({email})
                           }} onSubmitEditing={() => {
                               this.refs.password.focus()
-                          }} style={emailStyles.textInput}></TextInput>
+                          }} style={emailStyles.logInput}></TextInput>
                           <TextInput ref='password' placeholder="Enter Password" placeholderTextColor='#C7CACD' returnKeyType='next' secureTextEntry={true} onChangeText={(password) => {
                               this.setState({password})
                           }} keyboardShouldPersistTaps={true} onSubmitEditing={() => {
                               this.refs.password.focus()
-                          }} style={emailStyles.textInput}></TextInput>
+                          }} style={emailStyles.logInput}></TextInput>
                       </View>
                   </View>
                   <View style={{
@@ -83,15 +103,14 @@ class EmailLog extends Component {
 
 }
 
-onst mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
     return {currentUser: state.currentUser, numberAjax: state.numberAjax}
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         emailLogAttempt: (data) => {
-            console.log('Running from props')
-            dispatch(loginActions.emailLogAttempt(data));
+          return dispatch(loginActions.emailLogAttempt(data));
         }
     }
 }

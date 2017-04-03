@@ -1,25 +1,24 @@
 import * as types from './actionTypes';
 import {LoginManager} from 'react-native-fbsdk';
-import {
-    beginAjaxCall,
-    ajaxCallSuccess
-} from './ajaxStatusActions';
+import {beginAjaxCall, ajaxCallSuccess} from './ajaxStatusActions';
 import serverPath from '../config/devProd.js'
 import {AsyncStorage} from 'react-native';
 
 export function FBLogInSuccess(userData) {
-    return {
-        type: types.FB_LOGIN_SUCCESS,
-        userData
-    }
+    return {type: types.FB_LOGIN_SUCCESS, userData}
 }
 
 export function emailCreateSuccess(userData) {
-  return {type:types.EMAIL_CREATE_SUCCESS,
-          userData}
+    return {type: types.EMAIL_CREATE_SUCCESS, userData}
 }
 
+export function emailLogSuccess(userData) {
+    return {type: types.EMAIL_LOG_SUCCESS, userData}
+}
 
+export function emailLogFailure() {
+  return {type:types.EMAIL_LOG_FAILURE}
+}
 
 export function FBLogInRequest(fbAccessData) {
     return function(dispatch) {
@@ -30,47 +29,49 @@ export function FBLogInRequest(fbAccessData) {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                fbAccessData
-            })
+            body: JSON.stringify({fbAccessData})
         }).then((response) => {
-            response.json()
-                .then((data) => {
-                    dispatch(ajaxCallSuccess());
-                    dispatch(FBLogInSuccess(data));
-                })
+            response.json().then((data) => {
+                dispatch(ajaxCallSuccess());
+                dispatch(FBLogInSuccess(data));
+            })
         })
     }
 }
 
 export function emailCreateAttempt(userFormData) {
-  return function(dispatch) {
-  dispatch(beginAjaxCall())
-  return fetch(`${serverPath}emailLogAttempt`, {
-    method: 'POST',
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-        userFormData
-    })
-  }).then(response=>{
-    response.json()
-    .then(data=>{
-      console.log(data);
-      dispatch(ajaxCallSuccess());
-      dispatch(emailCreateSuccess(data))
-      return data
-    })
-  })
-}
+    return function(dispatch) {
+        dispatch(beginAjaxCall())
+        return fetch(`${serverPath}emailCreateAttempt`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({userFormData})
+        }).then(response => {
+            return response.json().then(data => {
+                console.log('DONEWITHASYNC');
+                dispatch(ajaxCallSuccess());
+                return dispatch(emailCreateSuccess(data))
+            })
+        })
+    }
 }
 
 export function emailLogAttempt(userData) {
-  console.log(userData);
+    return function(dispatch) {
+      return fetch(`${serverPath}emailLogAttempt`, {
+          method: 'POST',
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({userData})
+      })
+    }
 }
 
 export function logOutUser(currentUser) {
-//BUILD OUT
+    //BUILD OUT
 }

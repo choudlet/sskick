@@ -23,7 +23,7 @@ export default StyleSheet.create({
   },
   textInput: {
     marginTop:'5%',
-    height: '18%',
+    height: '20%',
     width:'60%',
     borderColor: 'white',
     borderWidth: 1,
@@ -50,6 +50,16 @@ export default StyleSheet.create({
     fontSize:20,
     padding:'5%',
     color:'white'
+  },
+  logInput: {
+      marginTop:'5%',
+      height: '25%',
+      width:'60%',
+      borderColor: 'white',
+      borderWidth: 1,
+      color:'white',
+      textAlign:'center',
+      alignSelf:'center'
   }
 
 
