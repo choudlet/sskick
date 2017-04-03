@@ -11,7 +11,7 @@ export default class FBLogButton extends Component {
           <View style={loginStyles.centeredRow}>
             <View style={loginStyles.alignText}>
             <Icon name="facebook-official" size={30} color="white"/>
-            <Text style={{color:'white'}}>  Login with Facebook</Text>
+            <Text style={{color:'white'}}>  Continue with Facebook</Text>
             </View>
         </View>
       </TouchableHighlight>

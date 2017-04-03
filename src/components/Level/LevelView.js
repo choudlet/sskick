@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import NavBar from '../shared/NavBar'
 import {View, Text, ActivityIndicator,ScrollView, Image, TouchableHighlight} from 'react-native';
-import LoadingSpinner from '../shared/LoadingSpinner';
 import levelStyles from './levelStyle';
 import SkillView from '../Skill/SkillView'
 import serverPath from '../../config/devProd';

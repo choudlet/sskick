@@ -8,7 +8,7 @@ import FBSDKCore from 'react-native-fbsdk';
 var {AccessToken, LoginManager} = FBSDKCore
 import {connect} from 'react-redux';
 import * as loginActions from '../../actions/loginActions'
-import LoadingSpinner from '../shared/LoadingSpinner';
+import Spinner from 'react-native-spinkit'
 import TutorialPlayer from '../TutorialPlayer/TutorialPlayer';
 import EmailCreate from '../EmailLogCreate/EmailCreate';
 
@@ -78,6 +78,7 @@ import EmailCreate from '../EmailLogCreate/EmailCreate';
         style={loginStyles.containerImage}
         source={require('../../assets/images/SoccerBackground.jpg')}
         >
+        {this.props.numberAjax!=0&&<View style={{zIndex:5, marginLeft:'5%', backgroundColor:'transparent'}}><Spinner color='#64AE20'></Spinner></View>}
         <View style={loginStyles.colorContainer}>
           <View style={{flex:2, alignItems:'center', justifyContent:'center'}}>
             <View style={loginStyles.centerBox}>
@@ -107,7 +108,9 @@ import EmailCreate from '../EmailLogCreate/EmailCreate';
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    numberAjax: state.numberAjax
+
   }
 }
 

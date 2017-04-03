@@ -20,6 +20,7 @@ export function emailCreateSuccess(userData) {
 }
 
 
+
 export function FBLogInRequest(fbAccessData) {
     return function(dispatch) {
         dispatch(beginAjaxCall())
@@ -45,10 +46,26 @@ export function FBLogInRequest(fbAccessData) {
 export function emailCreateAttempt(userFormData) {
   return function(dispatch) {
   dispatch(beginAjaxCall())
-  dispatch(emailCreateSuccess(userFormData))
+  return fetch(`${serverPath}emailLogAttempt`, {
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        userFormData
+    })
+  }).then(response=>{
+    response.json()
+    .then(data=>{
+      console.log(data);
+      dispatch(ajaxCallSuccess());
+      dispatch(emailCreateSuccess(data))
+    })
+  })
 }
 }
 
 export function logOutUser(currentUser) {
-
+//BUILD OUT
 }
