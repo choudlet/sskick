@@ -5,6 +5,7 @@ import levelStyles from './levelStyle';
 import SkillView from '../Skill/SkillView'
 import serverPath from '../../config/devProd';
 import Spinner from 'react-native-spinkit'
+import ModalMenu from '../shared/ModalMenu'
 
 export default class LevelView extends Component {
 
@@ -15,6 +16,21 @@ export default class LevelView extends Component {
       levelLoadTotal:0
     }
   }
+
+  showNavModal() {
+    console.log('Running Show')
+      this.setState({
+        modalVisible: true,
+      })
+    }
+
+    hideNavModal() {
+      console.log('Running Hide')
+      this.setState({
+        modalVisible:false
+      })
+    }
+
 
   transitionToSkill(level) {
     return fetch(`${serverPath}level/${level.id}`)
@@ -28,8 +44,7 @@ export default class LevelView extends Component {
         component:SkillView,
         navigationBarHidden:true,
         passProps: {
-          selectedLevelandSkills: this.state.selectedLevelandSkills,
-          showNavModal: this.props.showNavModal
+          selectedLevelandSkills: this.state.selectedLevelandSkills
         }
       })
     })
@@ -62,7 +77,7 @@ export default class LevelView extends Component {
     })
     return(
       <View>
-      <NavBar navigator={this.props.navigator} showNavModal={this.props.showNavModal}/>
+      <NavBar navigator={this.props.navigator} showNavModal={this.showNavModal.bind(this)}/>
       <Image
         source={require('../../assets/images/FieldBackground.jpg')}
         style={levelStyles.backgroundImage}
@@ -81,6 +96,7 @@ export default class LevelView extends Component {
         </ScrollView>
       </View>
     </Image>
+    {this.state.modalVisible && <ModalMenu navigator={this.props.navigator} hideNavModal={()=>{this.hideNavModal()}}/>}
       </View>
     )
   }

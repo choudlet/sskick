@@ -15,21 +15,6 @@ export default class Scene extends Component {
 
 
 
-showNavModal() {
-  console.log('Running!')
-    this.setState({
-      modalVisible: true
-    })
-    console.log(this.state)
-  }
-
-hideNavModal() {
-  console.log('Running Hide')
-  this.setState({
-    modalVisible:false
-  })
-}
-
   render() {
     console.log('Render of Scene is Run')
   return (
@@ -41,12 +26,8 @@ hideNavModal() {
          component: Splash,
          title: 'Splash',
          navigationBarHidden: true,
-         passProps: {
-           showNavModal: this.showNavModal.bind(this)
-         }
        }}
      />
-   {this.state.modalVisible && <ModalMenu hideNavModal={()=>{this.hideNavModal()}}/>}
  </View>
   )
   }

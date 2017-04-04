@@ -28,9 +28,9 @@ export function FBLogInRequest(fbAccessData) {
             },
             body: JSON.stringify({fbAccessData})
         }).then((response) => {
-            response.json().then((data) => {
-                dispatch(ajaxCallSuccess());
+            return response.json().then((data) => {
                 dispatch(FBLogInSuccess(data));
+                return dispatch(ajaxCallSuccess());
             })
         })
     }
@@ -79,6 +79,6 @@ export function emailLogAttempt(userData) {
     }
 }
 
-export function logOutUser(currentUser) {
-    //BUILD OUT
+export function logOutUser() {
+  return {type:types.LOG_OUT_USER}
 }

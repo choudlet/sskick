@@ -5,6 +5,7 @@ import pathStyles from './pathStyle.js'
 import LevelView from '../Level/LevelView';
 import serverPath from '../../config/devProd';
 import Spinner from 'react-native-spinkit';
+import ModalMenu from '../shared/ModalMenu'
 
 export default class PathContainer extends Component {
 constructor(props) {
@@ -22,10 +23,23 @@ constructor(props) {
     })
   }
 
+  showNavModal() {
+    console.log('Running Show')
+      this.setState({
+        modalVisible: true,
+      })
+    }
+
+    hideNavModal() {
+      console.log('Running Hide')
+      this.setState({
+        modalVisible:false
+      })
+    }
+
   transitionToPath(path) {
     return fetch(`${serverPath}path/${path.id}`)
     .then((data)=> {
-      console.log(data);
       return data.json()
     }).then(dataJson=> {
       this.setState({
@@ -35,8 +49,7 @@ constructor(props) {
         component:LevelView,
         navigationBarHidden:true,
         passProps: {
-          selectedPathAndLevels: this.state.selectedPathAndLevels,
-          showNavModal: this.props.showNavModal
+          selectedPathAndLevels: this.state.selectedPathAndLevels
         }
       })
     })
@@ -57,7 +70,7 @@ constructor(props) {
           source={require('../../assets/images/stadium.jpg')}
           style={pathStyles.containerImage}
           >
-        <NavBar navigator={this.props.navigator} showNavModal={this.props.showNavModal}></NavBar>
+        <NavBar navigator={this.props.navigator} showNavModal={this.showNavModal.bind(this)}></NavBar>
         <View style={pathStyles.introContainer}>
           <Text style={pathStyles.headText}>The Path To Pro</Text>
           <View style={pathStyles.borderLine}></View>
@@ -76,6 +89,7 @@ constructor(props) {
           {pathsContent}
         </View>
       </View>
+      {this.state.modalVisible && <ModalMenu navigator={this.props.navigator} hideNavModal={()=>{this.hideNavModal()}}/>}
         </Image>
     )
 }

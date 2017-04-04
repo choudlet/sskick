@@ -4,7 +4,7 @@ import NavBar from '../shared/NavBar';
 import skillStyles from './skillStyle';
 import DrillLaunch from '../DrillLaunch/DrillLaunch'
 import Spinner from 'react-native-spinkit';
-
+import ModalMenu from '../shared/ModalMenu'
 
 export default class SkillView extends Component {
 
@@ -24,12 +24,24 @@ export default class SkillView extends Component {
       passProps: {
         currentDrill: skill,
         levelImageUrl:this.props.selectedLevelandSkills.backgroundImageUrl,
-        levelId: this.props.selectedLevelandSkills.id,
-        showNavModal: this.props.showNavModal
+        levelId: this.props.selectedLevelandSkills.id
       }
     })
 
   }
+  showNavModal() {
+    console.log('Running Show')
+      this.setState({
+        modalVisible: true,
+      })
+    }
+
+    hideNavModal() {
+      console.log('Running Hide')
+      this.setState({
+        modalVisible:false
+      })
+    }
 
 componentDidMount() {
 }
@@ -52,7 +64,7 @@ componentDidMount() {
 
     return(
       <View>
-      <NavBar navigator={this.props.navigator} showNavModal={this.props.showNavModal}></NavBar>
+      <NavBar navigator={this.props.navigator} showNavModal={this.showNavModal.bind(this)}></NavBar>
       <Image
         source={require('../../assets/images/stadium.jpg')}
         style={{width:null,height:null}}
@@ -85,6 +97,7 @@ componentDidMount() {
       </Image>
     </View>
     </Image>
+    {this.state.modalVisible && <ModalMenu navigator={this.props.navigator} hideNavModal={()=>{this.hideNavModal()}}/>}
     </View>
     )
   }

@@ -7,14 +7,10 @@ import {connect} from 'react-redux';
 
  class NavBar extends Component {
 
-
   goBack() {
     this.props.navigator.pop()
   }
 
-componentDidMount() {
-  console.log(this.props)
-}
 
   render() {
 
@@ -24,10 +20,9 @@ componentDidMount() {
         <TouchableHighlight onPress={()=>{this.goBack()}}>
       <Icon name="angle-left" size={30} style={navBarStyles.arrow}/>
       </TouchableHighlight>
-
       </View>
       <View style={navBarStyles.container}>
-        <Text style={navBarStyles.textStyle}>Player</Text>
+        <Text style={navBarStyles.textStyle}>{this.props.currentUser.name}</Text>
         </View>
         <View style={navBarStyles.container}>
           <TouchableHighlight onPress={()=>this.props.showNavModal()}>
@@ -50,11 +45,7 @@ componentDidMount() {
   }
 
   const mapDispatchToProps = (dispatch) => {
-    return {
-      logOutUser: (data) => {
-        dispatch(loginActions.logOutUser(data));
-      }
-    }
+    return {}
   }
 
   export default connect(mapStateToProps, mapDispatchToProps)(NavBar)

@@ -7,7 +7,8 @@ import VideoPlayer from 'react-native-video-controls';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import VideoPlay from '../VideoPlay/VideoPlay';
 import PathContainer from '../Path/PathContainer';
-import serverPath from '../../config/devProd.js'
+import serverPath from '../../config/devProd.js';
+import ModalMenu from '../shared/ModalMenu'
 
 
 export default class TutorialPlayer extends Component {
@@ -17,14 +18,30 @@ export default class TutorialPlayer extends Component {
     this.state= {
       paths: undefined,
       pathsNumber: undefined,
+      modalVisible:false
     }
   }
+
+  showNavModal() {
+    console.log('Running Show')
+      this.setState({
+        modalVisible: true,
+      })
+    }
+
+    hideNavModal() {
+      console.log('Running Hide')
+      this.setState({
+        modalVisible:false
+      })
+    }
+
 
   transitionToVideo() {
     this.props.navigator.push({
       component: VideoPlay,
       navigationBarHidden:true,
-      passProps: { videoSRC: 'https://s3.amazonaws.com/sskick/Best+Soccer+Training+Ball+-+The+Soccer+Sidekick.mp4' }
+      passProps: { videoSRC: 'https://s3.amazonaws.com/sskick/Training+App+Intro.mp4' }
     })
   }
 
@@ -32,7 +49,7 @@ export default class TutorialPlayer extends Component {
     this.props.navigator.push({
       component:PathContainer,
       navigationBarHidden:true,
-      passProps: {paths:this.state.paths, pathsNumber:this.state.pathsNumber, showNavModal: this.props.showNavModal}
+      passProps: {paths:this.state.paths, pathsNumber:this.state.pathsNumber}
     })
   }
 
@@ -57,7 +74,7 @@ export default class TutorialPlayer extends Component {
               style={tutorialStyles.containerImage}
               source={require('../../assets/images/FieldBackground.jpg')}
               >
-              <NavBar navigator={this.props.navigator} showNavModal={this.props.showNavModal}></NavBar>
+              <NavBar navigator={this.props.navigator} showNavModal={this.showNavModal.bind(this)}></NavBar>
               <View style={tutorialStyles.introContainer}>
                 <Text style={tutorialStyles.headlineText}>Tutorial Video</Text>
                 <View style={tutorialStyles.borderLine}></View>
@@ -76,6 +93,7 @@ export default class TutorialPlayer extends Component {
                 <Text style={tutorialStyles.skip}>Skip</Text>
               </View>
               </TouchableHighlight>
+              {this.state.modalVisible && <ModalMenu navigator={this.props.navigator} hideNavModal={()=>{this.hideNavModal()}}/>}
             </Image>
       );
     }

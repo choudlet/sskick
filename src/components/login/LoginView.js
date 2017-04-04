@@ -20,9 +20,6 @@ import EmailLog from '../EmailLogCreate/EmailLog';
      this.props.navigator.push({
        component: TutorialPlayer,
        navigationBarHidden:true,
-       passProps: {
-         showNavModal: this.props.showNavModal
-       }
 
      })
    }
@@ -31,9 +28,6 @@ import EmailLog from '../EmailLogCreate/EmailLog';
      this.props.navigator.push({
        component: EmailCreate,
        navigationBarHidden:true,
-       passProps: {
-         showNavModal: this.props.showNavModal
-       }
      })
    }
 
@@ -41,9 +35,6 @@ import EmailLog from '../EmailLogCreate/EmailLog';
      this.props.navigator.push({
        component: EmailLog,
        navigationBarHidden:true,
-       passProps: {
-         showNavModal: this.props.showNavModal
-       }
      })
    }
 
@@ -58,7 +49,6 @@ import EmailLog from '../EmailLogCreate/EmailLog';
   }
 
   triggerFBSignIn() {
-    console.log('Attempting FB Sign In')
     LoginManager.logInWithReadPermissions(['public_profile', 'email']).then((result) => {
     if (result.isCancelled) {
       //SET ERROR HANDLING
@@ -66,8 +56,11 @@ import EmailLog from '../EmailLogCreate/EmailLog';
         console.log(result);
         AccessToken.getCurrentAccessToken().then(
                   (data) => {
-                    this.props.FBLogInRequest(data)
-                     this.transitionToTutorial()
+                    console.log('BEFORE ASYNC')
+                    this.props.FBLogInRequest(data).then((newData)=>{
+                    this.transitionToTutorial()
+                    })
+
                   }
                 )
     }
@@ -92,7 +85,6 @@ import EmailLog from '../EmailLogCreate/EmailLog';
         style={loginStyles.containerImage}
         source={require('../../assets/images/SoccerBackground.jpg')}
         >
-        {this.props.numberAjax!=0&&<View style={{zIndex:5, marginLeft:'5%', backgroundColor:'transparent'}}><Spinner color='#64AE20'></Spinner></View>}
         <View style={loginStyles.colorContainer}>
           <View style={{flex:2, alignItems:'center', justifyContent:'center'}}>
             <View style={loginStyles.centerBox}>
@@ -100,16 +92,20 @@ import EmailLog from '../EmailLogCreate/EmailLog';
             </View>
             <View style={loginStyles.borderLine}></View>
           </View>
-          <View style={{flex:2}}>
-            <View style={loginStyles.centerBox}>
-            <FBLogButton triggerFBSignIn={this.triggerFBSignIn.bind(this)}></FBLogButton>
+          <View style={{flex:2, alignItems:'center', justifyContent:'center'}}>
+            {this.props.numberAjax!=0?<Spinner size={150} color='#64AE20'></Spinner>:
+              <View>
+              <View style={loginStyles.centerBox}>
+              <FBLogButton triggerFBSignIn={this.triggerFBSignIn.bind(this)}></FBLogButton>
+              </View>
+              <View style={loginStyles.centerBox}>
+                <EmailLogButton triggerEmailLogin={this.triggerEmailLogin.bind(this)}></EmailLogButton>
+              </View>
+              <View style={loginStyles.centerBox}>
+                <EmailCreateButton triggerEmailAccountCreate={this.triggerEmailAccountCreate.bind(this)}></EmailCreateButton>
+              </View>
             </View>
-            <View style={loginStyles.centerBox}>
-              <EmailLogButton triggerEmailLogin={this.triggerEmailLogin.bind(this)}></EmailLogButton>
-            </View>
-            <View style={loginStyles.centerBox}>
-              <EmailCreateButton triggerEmailAccountCreate={this.triggerEmailAccountCreate.bind(this)}></EmailCreateButton>
-            </View>
+            }
           </View>
           <View style={{flex:1}}>
           </View>
@@ -132,7 +128,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     FBLogInRequest: (data) => {
       console.log('Running from props')
-      dispatch(loginActions.FBLogInRequest(data));
+      return dispatch(loginActions.FBLogInRequest(data));
     }
   }
 }

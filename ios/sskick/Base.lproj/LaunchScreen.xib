@@ -14,11 +14,21 @@
         <view contentMode="center" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="520" height="870"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Backyard Basics.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="MCM-ZF-ecL">
+                    <rect key="frame" x="-140" y="0.0" width="1000" height="0.0"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                </imageView>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <color key="tintColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
             <point key="canvasLocation" x="547" y="634"/>
         </view>
     </objects>
+    <resources>
+        <image name="Backyard Basics.jpg" width="800" height="533"/>
+    </resources>
 </document>

@@ -6,6 +6,7 @@ import Spinner from 'react-native-spinkit'
 import drillLaunchStyles from './DrillLaunchStyle';
 import VideoPlay from '../VideoPlay/VideoPlay.js'
 import DrillRun from '../DrillRun/DrillRun'
+import ModalMenu from '../shared/ModalMenu'
 
 export default class DrillLaunch extends Component {
 
@@ -27,6 +28,18 @@ export default class DrillLaunch extends Component {
       imageLoad:true
     })
   }
+
+  showNavModal() {
+      this.setState({
+        modalVisible: true,
+      })
+    }
+
+    hideNavModal() {
+      this.setState({
+        modalVisible:false
+      })
+    }
 
   launchVideo() {
     this.props.navigator.push({
@@ -127,8 +140,7 @@ export default class DrillLaunch extends Component {
         drillTime: this.determineMilliseconds(this.state.timeIterator),
         drill: this.props.currentDrill,
         levelImageUrl:this.props.levelImageUrl,
-        levelId: this.props.levelId,
-        showNavModal:this.props.showNavModal
+        levelId: this.props.levelId
       }
     })
 
@@ -146,7 +158,7 @@ export default class DrillLaunch extends Component {
 
     return (
       <View>
-      <NavBar navigator={this.props.navigator} showNavModal={this.props.showNavModal}></NavBar>
+      <NavBar navigator={this.props.navigator} showNavModal={this.showNavModal.bind(this)}></NavBar>
         <Image
           source={require('../../assets/images/stadium.jpg')}
           style={{width:'100%',height:'100%'}}
@@ -205,6 +217,7 @@ export default class DrillLaunch extends Component {
           </Image>
         </View>
         </Image>
+        {this.state.modalVisible && <ModalMenu navigator={this.props.navigator} hideNavModal={()=>{this.hideNavModal()}}/>}
     </View>
     )
   }
