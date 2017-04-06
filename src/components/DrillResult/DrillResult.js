@@ -211,7 +211,7 @@ render() {
                                     </TouchableHighlight>
                                     <TouchableHighlight style={{
                                         marginTop: 20
-                                    }} onPress={}>
+                                    }}>
                                         <View style={drillResultStyles.borderBox}>
                                             <Text style={{
                                                 color: 'white'
