@@ -25,6 +25,7 @@
 		0466161B1E7789D10010C2B8 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 046616191E7789D10010C2B8 /* Bolts.framework */; };
 		046616411E78743A0010C2B8 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 046616401E78743A0010C2B8 /* FontAwesome.ttf */; };
 		046616421E78743A0010C2B8 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 046616401E78743A0010C2B8 /* FontAwesome.ttf */; };
+		0474A59E1E95654300680A2F /* whistle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0474A59D1E95654300680A2F /* whistle.wav */; };
 		04C80EF51E8306CB002C8F7A /* SideKickLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 04C80EF41E8306CB002C8F7A /* SideKickLogo.png */; };
 		04C80F4F1E8483E7002C8F7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C80F4E1E8483E7002C8F7A /* Assets.xcassets */; };
 		04C80F511E8484C8002C8F7A /* Backyard Basics.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04C80F501E8484C8002C8F7A /* Backyard Basics.jpg */; };
@@ -58,6 +59,7 @@
 		640A3DAC169F4F998800DB9D /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F26866BF1AD249CCBFE05CF4 /* libRCTVideo.a */; };
 		741A1C867D6646AF8A119E63 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC8E8F9BACB24F188B94491F /* libRNVectorIcons.a */; };
 		76C51C42E351444592049737 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0CFF84B00E54477BF066995 /* MaterialCommunityIcons.ttf */; };
+		7C83CB9C8C59428B9A3ECB7C /* libRNSound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F6FA40FD7F04F64BFF63B63 /* libRNSound.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		995BDF650AC74752A6F49231 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD19294ECBDD4030B73388FD /* MaterialIcons.ttf */; };
 		B5BE49AFBEF54BAC857C4325 /* libRNBlur.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E078CBD5C94F7DA450EE1D /* libRNBlur.a */; };
@@ -116,6 +118,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 9350E0F11CE3B0920041D815;
 			remoteInfo = RCTFBSDK;
+		};
+		0474A5971E95651A00680A2F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8AD273D424D3416CAB8B5030 /* RNSound.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 19825A1E1BD4A89800EE0337;
+			remoteInfo = RNSound;
 		};
 		049977351E8C67CD004CFC9F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -324,6 +333,7 @@
 		046616161E7787520010C2B8 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		046616191E7789D10010C2B8 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		046616401E78743A0010C2B8 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		0474A59D1E95654300680A2F /* whistle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = whistle.wav; sourceTree = "<group>"; };
 		04C80EF41E8306CB002C8F7A /* SideKickLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SideKickLogo.png; sourceTree = "<group>"; };
 		04C80F4E1E8483E7002C8F7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04C80F501E8484C8002C8F7A /* Backyard Basics.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Backyard Basics.jpg"; sourceTree = "<group>"; };
@@ -348,10 +358,12 @@
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		6555453752AC4C51A084E0FC /* LRDRCTSimpleToast.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = LRDRCTSimpleToast.xcodeproj; path = "../node_modules/react-native-simple-toast/ios/LRDRCTSimpleToast.xcodeproj"; sourceTree = "<group>"; };
 		6E60AF2EBB874FDBA819D3C8 /* libRNSpinkit.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSpinkit.a; sourceTree = "<group>"; };
+		6F6FA40FD7F04F64BFF63B63 /* libRNSound.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSound.a; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		80C61200D0224CADB2F1B6D4 /* RNSpinkit.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSpinkit.xcodeproj; path = "../node_modules/react-native-spinkit/ios/RNSpinkit.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		83909D462D4B4761AEB69252 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		8AD273D424D3416CAB8B5030 /* RNSound.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSound.xcodeproj; path = "../node_modules/react-native-sound/RNSound.xcodeproj"; sourceTree = "<group>"; };
 		AC8E8F9BACB24F188B94491F /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
 		AD2396E4B10D45C18E14A623 /* RNBlur.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNBlur.xcodeproj; path = "../node_modules/react-native-blur/ios/RNBlur.xcodeproj"; sourceTree = "<group>"; };
 		AD7644889ED1402CAFE77FC3 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
@@ -404,6 +416,7 @@
 				741A1C867D6646AF8A119E63 /* libRNVectorIcons.a in Frameworks */,
 				B5BE49AFBEF54BAC857C4325 /* libRNBlur.a in Frameworks */,
 				3AAA93AE9BA74822BCA79D77 /* libLRDRCTSimpleToast.a in Frameworks */,
+				7C83CB9C8C59428B9A3ECB7C /* libRNSound.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,6 +523,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		0474A5761E95651A00680A2F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0474A5981E95651A00680A2F /* libRNSound.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		049977321E8C67CC004CFC9F /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -596,6 +617,7 @@
 		13B07FAE1A68108700A75B9A /* sskick */ = {
 			isa = PBXGroup;
 			children = (
+				0474A59D1E95654300680A2F /* whistle.wav */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				046615E31E7785A60010C2B8 /* octin sports rg.ttf */,
 				046616401E78743A0010C2B8 /* FontAwesome.ttf */,
@@ -665,6 +687,7 @@
 				236B6B81465A4BC4829317A1 /* RNVectorIcons.xcodeproj */,
 				AD2396E4B10D45C18E14A623 /* RNBlur.xcodeproj */,
 				6555453752AC4C51A084E0FC /* LRDRCTSimpleToast.xcodeproj */,
+				8AD273D424D3416CAB8B5030 /* RNSound.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -883,6 +906,10 @@
 					ProjectRef = AD2396E4B10D45C18E14A623 /* RNBlur.xcodeproj */;
 				},
 				{
+					ProductGroup = 0474A5761E95651A00680A2F /* Products */;
+					ProjectRef = 8AD273D424D3416CAB8B5030 /* RNSound.xcodeproj */;
+				},
+				{
 					ProductGroup = 04CE80CC1E81CD5D005595E2 /* Products */;
 					ProjectRef = 80C61200D0224CADB2F1B6D4 /* RNSpinkit.xcodeproj */;
 				},
@@ -942,6 +969,13 @@
 			fileType = archive.ar;
 			path = libRCTFBSDK.a;
 			remoteRef = 046615F71E7786F90010C2B8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0474A5981E95651A00680A2F /* libRNSound.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNSound.a;
+			remoteRef = 0474A5971E95651A00680A2F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		049977361E8C67CD004CFC9F /* libLRDRCTSimpleToast.a */ = {
@@ -1152,6 +1186,7 @@
 				B8CEDF80C6AE40F28B235B13 /* FontAwesome.ttf in Resources */,
 				04C80F511E8484C8002C8F7A /* Backyard Basics.jpg in Resources */,
 				C351CA86C5EC45879459F911 /* Foundation.ttf in Resources */,
+				0474A59E1E95654300680A2F /* whistle.wav in Resources */,
 				CDACB00B94F043FCB996A2CC /* Ionicons.ttf in Resources */,
 				76C51C42E351444592049737 /* MaterialCommunityIcons.ttf in Resources */,
 				995BDF650AC74752A6F49231 /* MaterialIcons.ttf in Resources */,
@@ -1293,12 +1328,14 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-blur/ios",
 					"$(SRCROOT)/../node_modules/react-native-simple-toast/ios/LRDRCTSimpleToast",
+					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 				);
 				INFOPLIST_FILE = sskickTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1329,12 +1366,14 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-blur/ios",
 					"$(SRCROOT)/../node_modules/react-native-simple-toast/ios/LRDRCTSimpleToast",
+					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 				);
 				INFOPLIST_FILE = sskickTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1366,6 +1405,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-blur/ios",
 					"$(SRCROOT)/../node_modules/react-native-simple-toast/ios/LRDRCTSimpleToast",
+					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 				);
 				INFOPLIST_FILE = sskick/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1376,6 +1416,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.choudlette.sskick;
 				PRODUCT_NAME = sskick;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1399,6 +1440,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-blur/ios",
 					"$(SRCROOT)/../node_modules/react-native-simple-toast/ios/LRDRCTSimpleToast",
+					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 				);
 				INFOPLIST_FILE = sskick/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1409,6 +1451,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.choudlette.sskick;
 				PRODUCT_NAME = sskick;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -1434,11 +1477,13 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-blur/ios",
 					"$(SRCROOT)/../node_modules/react-native-simple-toast/ios/LRDRCTSimpleToast",
+					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 				);
 				INFOPLIST_FILE = "sskick-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1474,11 +1519,13 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-blur/ios",
 					"$(SRCROOT)/../node_modules/react-native-simple-toast/ios/LRDRCTSimpleToast",
+					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 				);
 				INFOPLIST_FILE = "sskick-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1509,6 +1556,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.sskick-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1533,6 +1581,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.sskick-tvOSTests";

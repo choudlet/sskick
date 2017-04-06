@@ -17,7 +17,9 @@ class DrillResult extends Component {
             minutes: undefined,
             seconds: undefined,
             imageLoad: false,
-            completed: false
+            completed: false,
+            trainingSessions: null,
+            trainingTime:null
         }
     }
 
@@ -113,7 +115,12 @@ class DrillResult extends Component {
             seconds: this.state.seconds,
             completed: this.state.completed
         }
-        this.props.createLeaderEntry(trainingRecord);
+        this.props.createLeaderEntry(trainingRecord).then((data)=>{
+          this.setState({
+            trainingSessions: data.trainingSessions,
+            trainingTime: data.formattedTime
+          })
+        });
     }
 
 render() {
@@ -178,6 +185,10 @@ render() {
                                     alignItems: 'center',
                                     justifyContent: 'center'
                                 }}>
+                                <View style={{alignItems:'center', justifyContent:'center', width:'80%'}}>
+                                <Text style={{textAlign:'center', color:'white'}}>You have practiced the {this.props.drill.name} {this.state.trainingSessions} time(s) for a total duration of:</Text>
+                                {this.state.trainingTime && this.state.trainingTime.length == 2?<Text style={{textAlign:'center', color:'white'}}>{this.state.trainingTime[0]}{String.fromCharCode(58)}{this.state.trainingTime[1]}</Text>:null}
+                                </View>
                                     <TouchableHighlight style={{
                                         marginTop: 20
                                     }} onPress={() => {
@@ -196,6 +207,15 @@ render() {
                                             <Text style={{
                                                 color: 'white'
                                             }}>Back to Level</Text>
+                                        </View>
+                                    </TouchableHighlight>
+                                    <TouchableHighlight style={{
+                                        marginTop: 20
+                                    }} onPress={}>
+                                        <View style={drillResultStyles.borderBox}>
+                                            <Text style={{
+                                                color: 'white'
+                                            }}>Check Leaderboard</Text>
                                         </View>
                                     </TouchableHighlight>
                                 </View>

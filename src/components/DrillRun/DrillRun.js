@@ -7,6 +7,8 @@ import DrillResult from '../DrillResult/DrillResult';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import drillRunStyles from './DrillRunStyle';
 
+
+
 export default class DrillRun extends Component {
 
   constructor() {
@@ -19,6 +21,7 @@ export default class DrillRun extends Component {
     this.saveTime = this.saveTime.bind(this)
     this.transitionToResult = this.transitionToResult.bind(this)
   }
+
 
   transitionToResult() {
     this.props.navigator.push({
