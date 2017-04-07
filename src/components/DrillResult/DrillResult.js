@@ -8,6 +8,7 @@ import Spinner from 'react-native-spinkit';
 import {connect} from 'react-redux';
 import * as leaderboardActions from '../../actions/leaderboardActions';
 import ModalMenu from '../shared/ModalMenu'
+import serverPath from '../../config/devProd';
 
 class DrillResult extends Component {
 
