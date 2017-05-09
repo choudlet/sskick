@@ -26,6 +26,7 @@ this.formatTime()
 
 
   startTime() {
+    this.props.startTimer();
     let runningInterval = setInterval(()=> {
       this.setState({
         countdownLeft: this.state.countdownLeft - 1000,

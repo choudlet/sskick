@@ -53,10 +53,10 @@ import EmailLog from '../EmailLogCreate/EmailLog';
     if (result.isCancelled) {
       //SET ERROR HANDLING
     } else {
-        console.log(result);
+
         AccessToken.getCurrentAccessToken().then(
                   (data) => {
-                    console.log('BEFORE ASYNC')
+
                     this.props.FBLogInRequest(data).then((newData)=>{
                     this.transitionToTutorial()
                     })
@@ -74,11 +74,7 @@ import EmailLog from '../EmailLogCreate/EmailLog';
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
   }
-
-  componentWillMount() {
-    console.log(this.props)
-  }
-
+  
   render() {
     return (
       <Image

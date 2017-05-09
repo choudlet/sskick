@@ -15,31 +15,53 @@ export default class DrillRun extends Component {
     super()
     this.state = {
       imageLoad:false,
-      remainingTime:null
+      remainingTime:null,
+      timerStart: false
     }
 
     this.saveTime = this.saveTime.bind(this)
     this.transitionToResult = this.transitionToResult.bind(this)
+    this.startTimer = this.startTimer.bind(this);
   }
 
-
-  transitionToResult() {
-    this.props.navigator.push({
-      component:DrillResult,
-      navigationBarHidden:true,
-      passProps:{
-        remainingTime:this.state.remainingTime,
-        totalTime:this.props.drillTime,
-        drill: this.props.drill,
-        levelImageUrl: this.props.levelImageUrl,
-        levelId: this.props.levelId,
-        showNavModal: this.props.showNavModal
-      }
+  startTimer() {
+    this.setState({
+      timerStart: true
     })
   }
 
-  componentWillMount() {
-    console.log(this.props);
+  transitionToResult() {
+    if(this.state.timerStart == false) {
+      this.setState({
+        remainingTime: this.props.drillTime
+      }, ()=> {
+        this.props.navigator.push({
+          component:DrillResult,
+          navigationBarHidden:true,
+          passProps:{
+            remainingTime:this.state.remainingTime,
+            totalTime:this.props.drillTime,
+            drill: this.props.drill,
+            levelImageUrl: this.props.levelImageUrl,
+            levelId: this.props.levelId,
+            showNavModal: this.props.showNavModal
+          }
+        })
+      })
+    } else {
+      this.props.navigator.push({
+        component:DrillResult,
+        navigationBarHidden:true,
+        passProps:{
+          remainingTime:this.state.remainingTime,
+          totalTime:this.props.drillTime,
+          drill: this.props.drill,
+          levelImageUrl: this.props.levelImageUrl,
+          levelId: this.props.levelId,
+          showNavModal: this.props.showNavModal
+        }
+      })
+    }
   }
 
   imageLoadSuccess() {
@@ -82,7 +104,7 @@ export default class DrillRun extends Component {
             <View style={drillRunStyles.magicWrapper}>
               <View style={{flex:1, justifyContent:'center'}}>
                 <Text style={{fontSize:30, color:'white', fontFamily: 'Octin Sports'}}>{this.props.drill.name}</Text>
-            <Timer milliseconds={this.props.drillTime} saveTime={this.saveTime} transitionToResult={this.transitionToResult}/>
+            <Timer milliseconds={this.props.drillTime} saveTime={this.saveTime} transitionToResult={this.transitionToResult} startTimer={this.startTimer}/>
             </View>
             <View style={{flex:1}}></View>
             <View style={{flex:1, alignItems:'center', justifyContent:'center'}}>

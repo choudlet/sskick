@@ -23,14 +23,13 @@ export default class TutorialPlayer extends Component {
   }
 
   showNavModal() {
-    console.log('Running Show')
       this.setState({
         modalVisible: true,
       })
     }
 
     hideNavModal() {
-      console.log('Running Hide')
+
       this.setState({
         modalVisible:false
       })
@@ -54,12 +53,11 @@ export default class TutorialPlayer extends Component {
   }
 
   componentWillMount() {
-    console.log(this.props);
+
     return fetch(`${serverPath}path`)
     .then((data)=> {
       return data.json()
     }).then(dataJson=> {
-      console.log(dataJson)
       this.setState({
         paths: dataJson,
         pathsNumber: dataJson.length

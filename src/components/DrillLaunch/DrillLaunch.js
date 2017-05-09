@@ -50,8 +50,6 @@ export default class DrillLaunch extends Component {
   }
 
   increaseMinutes() {
-    console.log('INCREASE')
-    console.log(this.state.timerIterator)
     this.setState({
       timeIterator: this.state.timeIterator + 1
     }, ()=>{
@@ -62,7 +60,6 @@ export default class DrillLaunch extends Component {
 
 
   decreaseMinutes() {
-    console.log('DECREASE')
     this.setState({
       timeIterator: this.state.timeIterator - 1
     }, ()=>{
@@ -73,7 +70,6 @@ export default class DrillLaunch extends Component {
 
 
   updateTime(number) {
-    console.log('UPDATING TIME')
     let minutes;
     switch(number) {
       case 0:
@@ -125,11 +121,9 @@ export default class DrillLaunch extends Component {
       minutes = '30:00';
       break;
     }
-    console.log(minutes)
     this.setState({
       currentTime: minutes
     })
-    console.log(this.state.currentTime)
   }
 
   runDrill() {
@@ -147,9 +141,7 @@ export default class DrillLaunch extends Component {
   }
 
   determineMilliseconds(timeIndex) {
-    console.log(timeIndex)
     let milliseconds = timeIndex * 60000 * 2;
-    console.log(milliseconds)
     return milliseconds
   }
 

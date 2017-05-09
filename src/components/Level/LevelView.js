@@ -18,14 +18,12 @@ export default class LevelView extends Component {
   }
 
   showNavModal() {
-    console.log('Running Show')
       this.setState({
         modalVisible: true,
       })
     }
 
     hideNavModal() {
-      console.log('Running Hide')
       this.setState({
         modalVisible:false
       })
@@ -54,11 +52,9 @@ export default class LevelView extends Component {
     this.setState({
       levelLoadTotal: this.state.levelLoadTotal + 1
     })
-    console.log(this.state.levelLoadTotal, this.state.levelLoadTotal)
   }
 
   componentWillMount() {
-    console.log(this.props)
   }
 
 

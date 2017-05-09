@@ -17,21 +17,18 @@ constructor(props) {
   }
 }
   imageSuccess() {
-    console.log('IMAGE LOADED');
     this.setState({
       pathsImageLoad: this.state.pathsImageLoad + 1
     })
   }
 
   showNavModal() {
-    console.log('Running Show')
       this.setState({
         modalVisible: true,
       })
     }
 
     hideNavModal() {
-      console.log('Running Hide')
       this.setState({
         modalVisible:false
       })

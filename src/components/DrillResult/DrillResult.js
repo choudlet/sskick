@@ -29,18 +29,19 @@ class DrillResult extends Component {
     }
 
     componentWillMount() {
+
         this.formatTime(this.props.remainingTime, this.props.totalTime)
     }
 
     showNavModal() {
-      console.log('Running Show')
+
         this.setState({
           modalVisible: true,
         })
       }
 
       hideNavModal() {
-        console.log('Running Hide')
+
         this.setState({
           modalVisible:false
         })
@@ -208,15 +209,6 @@ render() {
                                             <Text style={{
                                                 color: 'white'
                                             }}>Back to Level</Text>
-                                        </View>
-                                    </TouchableHighlight>
-                                    <TouchableHighlight style={{
-                                        marginTop: 20
-                                    }}>
-                                        <View style={drillResultStyles.borderBox}>
-                                            <Text style={{
-                                                color: 'white'
-                                            }}>Check Leaderboard</Text>
                                         </View>
                                     </TouchableHighlight>
                                 </View>

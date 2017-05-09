@@ -19,12 +19,10 @@ class ModalMenu extends Component {
   }
 
   componentWillMount() {
-    console.log(this.props);
     return fetch(`${serverPath}path`)
     .then((data)=> {
       return data.json()
     }).then(dataJson=> {
-      console.log(dataJson)
       this.setState({
         paths: dataJson,
         pathsNumber: dataJson.length
@@ -68,10 +66,6 @@ return (
        <View style={{marginTop: '50%', alignItems:'center', justifyContent:'center'}}>
         <View style={{justifyContent:'center', alignItems:'center'}}>
           <TouchableHighlight onPress={()=>{this.backToPath()}}><Text style={modalStyles.basicFont}>Back to Path Select</Text></TouchableHighlight>
-          <Text style={modalStyles.basicFont}>Edit Profile</Text>
-          <Text style={modalStyles.basicFont}>Video Library</Text>
-          <Text style={modalStyles.basicFont}>Visit Leaderboards</Text>
-          <TouchableHighlight onPress={()=>{this.logOut()}}><Text style={modalStyles.basicFont}>Logout</Text></TouchableHighlight>
           <TouchableHighlight onPress={() => {
             this.props.hideNavModal()
           }}>

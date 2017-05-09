@@ -17,7 +17,6 @@ export default class SkillView extends Component {
   }
 
   transitionToDrill(skill) {
-    console.log('skill');
     this.props.navigator.push({
       component:DrillLaunch,
       navigationBarHidden:true,
@@ -30,14 +29,12 @@ export default class SkillView extends Component {
 
   }
   showNavModal() {
-    console.log('Running Show')
       this.setState({
         modalVisible: true,
       })
     }
 
     hideNavModal() {
-      console.log('Running Hide')
       this.setState({
         modalVisible:false
       })
